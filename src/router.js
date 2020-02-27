@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './components/Login'
 import Profile from './components/Profile'
+import DetailList from './components/DetailList'
 import firebase from 'firebase'
 
 Vue.use(Router);
@@ -18,6 +19,15 @@ let router = new Router({
                 path: '/profile',
                 name: 'Profile',
                 component: Profile,
+                meta: {
+                    auth: true
+                }
+            },
+            {
+                path: '/details',
+                name: 'Details',
+                component: DetailList,
+                props: true,
                 meta: {
                     auth: true
                 }

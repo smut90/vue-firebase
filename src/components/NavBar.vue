@@ -1,26 +1,26 @@
 <template>
+    <div class="container-fluid">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><font-awesome-icon icon="stream" size="lg" /> Prepare Sequence</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li v-show="user" class="nav-item">
+                        <router-link class="nav-link" to="/profile"><img :src=user.photoURL width="30" height="30"  alt="" style="border-radius:50%;"> {{user.displayName}}</router-link>
+                    </li>
+                    <li v-show="!user" class="nav-item">
+                        <router-link class="nav-link" to="/login">Login</router-link>
+                    </li>
+                    <li v-show="user" class="nav-item">
+                        <a class="nav-link" @click="signoutButtonPressed">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-<!--                <li @click.stop.prevent="setActiveTab('home')" v-bind:class="[ activeTab === 'home' ? 'nav-item active' : 'nav-item']">-->
-<!--                    <router-link class="nav-link" to="/" tag="a">Home</router-link>-->
-<!--                </li>-->
-<!--                <li v-show="user" @click.stop.prevent="setActiveTab('profile')" v-bind:class="[ activeTab === 'profile' ? 'nav-item active' : 'nav-item']">-->
-<!--                    <router-link  class="nav-link" to="/profile">Profile</router-link>-->
-<!--                </li>-->
-                <li v-show="!user" class="nav-item">
-                    <router-link class="nav-link" to="/login">Login</router-link>
-                </li>
-                <li v-show="user" class="nav-item">
-                    <a class="nav-link" @click="signoutButtonPressed">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    </div>
 </template>
 
 <script>

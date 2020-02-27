@@ -1,30 +1,25 @@
 <template>
-    <section style="background: whitesmoke; height: 100vh">
+    <div class="container-fluid" style="background: whitesmoke; min-height: 100vh; padding-left: 0; padding-right: 0;">
         <NavBar />
         <div class="jumbotron" style="margin-bottom: 0; background: #1d4354; box-shadow: 0 8px 6px -6px black; padding: 30px; margin-top: 50px">
             <div class="container align-self-center">
                 <div class="row">
-                    <div id="col-start" class="col-4 align-self-center"></div>
-                    <div id="col-info" class="col-4" style="text-align: center">
-                        <img
-                                :src="user.photoURL"
-                                style="width:75px;height:75px;border-radius:50%; margin-bottom: 10px"
-                        />
-                        <h3 class="display-5" style="color: whitesmoke">{{user.displayName}}</h3>
+                    <div id="col-start" class="col-xs-6 col-md-4 align-self-center"></div>
+                    <div id="col-info" class="col-xs-6 col-md-4" style="text-align: center">
+                        <h3 class="display-5" style="color: whitesmoke">Master Details</h3>
                         <small style="color: #b4bcc3">View your Master details</small>
                     </div>
-                    <div id="col-end" class="col-4 align-self-center"></div>
+                    <div id="col-end" class="col-xs-6 col-md-4 align-self-center"></div>
                 </div>
 
             </div>
         </div>
 
-        <div class="card horizontal" style="max-width:80%; margin:0 auto; padding: 20px; border: none; margin-top: 15px" v-if="user">
-            <p class="lead">Master Data List</p>
+        <div class="card horizontal" style="max-width:80%; padding: 20px; border: none; margin: 15px auto 0;" v-if="user">
             <MasterDataList :id=getFbUserFromState.id :user-info=firebaseData.userInfo :master-data=firebaseData.masterData />
         </div>
 
-    </section>
+    </div>
 </template>
 
 <script>

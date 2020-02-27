@@ -1,29 +1,22 @@
 # nikita-vue-app
 
-## Project setup
+## Initialize firebase on an existing vue app
 ```
-yarn install
+firebase init hosting 
+```
+then select a firebase project and select folder `dist` as the folder to serve static files from.
+
+### Build vue app
+```
+npm run build
 ```
 
-### Compiles and hot-reloads for development
+### Test locally
 ```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
+firebase serve
 ```
 
-### Run your tests
+### Deploy to firebase hosting
 ```
-yarn run test
+firebase deploy
 ```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

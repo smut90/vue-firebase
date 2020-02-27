@@ -3,12 +3,17 @@ const fb = require('../../firebaseConfig.js');
 const state = {
     userProfile: {},
     firebase: {},
+    activeMasterData: {}
 };
 
 const getters = {
     getFbUserFromState: (state) => {
         console.log('fetching fb user from state');
         return state.firebase;
+    },
+    getActiveMasterData: (state) => {
+        console.log('fetching active master data from state');
+        return state.activeMasterData;
     }
 };
 
@@ -28,6 +33,10 @@ const actions = {
         console.log('calling setCurrentUserCollectionAction: ', payload);
         commit('setUserCollection', payload);
     },
+    setActiveMasterDataAction({commit}, payload) {
+        console.log('calling setActiveMasterDataAction: ', payload);
+        commit('setActiveMasterData', payload);
+    },
     setLatestSeqNoAction({commit}, payload) {
         console.log('calling setLatestSeqNoAction: ', payload);
         commit('setLatestSeqNo', payload);
@@ -44,6 +53,9 @@ const mutations = {
     },
     setUserCollection(state, val) {
         state.firebase = val
+    },
+    setActiveMasterData(state, val) {
+        state.activeMasterData = val
     },
     setLatestSeqNo(state, val) {
         state.latest_seq_no = val
