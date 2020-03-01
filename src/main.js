@@ -16,10 +16,6 @@ Vue.use(BootstrapVue);
 library.add(faPuzzlePiece, faPencilAlt, faCheck, faLink, faStream, faHandPointLeft);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-// new Vue({
-//   render: h => h(App),
-// }).$mount('#app');
-
 // handle page reloads
 let app;
 fb.auth.onAuthStateChanged(() => {
@@ -32,24 +28,3 @@ fb.auth.onAuthStateChanged(() => {
     })
   }
 });
-
-
-// import Vue from 'vue'
-// import App from './App'
-// import router from './router'
-// import firebase from 'firebase'
-// Vue.config.productionTip = false;
-//
-//
-// const config = {
-//     apiKey: "AIzaSyD4TKEWlwokXAXrsE8LvNz1Zf3qxcbGY5U",
-//     authDomain: "rateme-5c4d7.firebaseapp.com",
-//     databaseURL: "https://rateme-5c4d7.firebaseio.com",
-//     projectId: "rateme-5c4d7"
-// };
-// firebase.initializeApp(config);
-//
-// new Vue({
-//     router,
-//     render: h => h(App),
-// }).$mount('#app');
