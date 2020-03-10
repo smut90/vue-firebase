@@ -29,6 +29,9 @@
                             </button>
                         </div>
                         <div class="col-md-6">
+                            <button type="submit" class="btn btn-secondary" @click.stop.prevent="runSequence()" style="margin-top: 10px; margin-bottom: 10px">
+                                <font-awesome-icon icon="puzzle-piece" size="lg" /> Run Sequence
+                            </button>
                             <button type="submit" class="btn btn-secondary float-right" @click.stop.prevent="addDetailData()" style="margin-top: 10px; margin-bottom: 10px">
                                 <font-awesome-icon icon="puzzle-piece" size="lg" /> add detail
                             </button>
@@ -148,6 +151,9 @@
         methods: {
             daysAgo(createdAt) {
                 return moment(createdAt).fromNow();
+            },
+            runSequence(){
+                this.$router.push({ name: 'RunSequence'});
             },
             navigateToMaster(){
                 this.$router.push({ name: 'Profile'});
