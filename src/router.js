@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './components/Login'
 import Profile from './components/Profile'
-import DetailList2 from './components/DetailList2'
+import DetailList from './components/DetailList'
 import RunSequence from './components/RunSequence'
 import firebase from 'firebase'
 
@@ -27,7 +27,7 @@ let router = new Router({
             {
                 path: '/details',
                 name: 'Details',
-                component: DetailList2,
+                component: DetailList,
                 props: true,
                 meta: {
                     auth: true
