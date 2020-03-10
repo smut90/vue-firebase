@@ -1,4 +1,4 @@
-# nikita-vue-app
+# Prepare-Sequence a vue-firebase webapp
 
 ## Initialize firebase on an existing vue app
 ```
