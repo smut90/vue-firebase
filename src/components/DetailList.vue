@@ -41,11 +41,20 @@
                         </button>
                     </div>
                 </div>
-                <div class="row" style="align-items: center; margin-left: auto; margin-right: auto; width: 75vh; height: 75vh; margin-bottom: 10px; padding: 10px;">
-                    <div v-if="processing">
-                        <p>Processing...</p>
+                <div class="row" style="align-items: center; padding: 10px;">
+                    <div v-if="processing||loadingData" class="boxStyle d-flex justify-content-center" style="background-color: rgb(243, 246, 249); padding-top: 40%">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                     </div>
-                    <div class="boxStyle" :style="box"></div>
+                    <div v-else class="boxStyle" :style="box"></div>
+                </div>
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="d-flex justify-content-center ml-auto mr-auto" >
+                        <button type="submit" class="btn btn-outline-danger" :disabled="!continuePlaying" @click.stop.prevent="stopPlaying()">
+                            <font-awesome-icon icon="stop"/> stop
+                        </button>
+                    </div>
                 </div>
 
                 <div class="row fixed-bottom" style="padding-left: 10px; padding-top: 10px; padding-bottom: 5px; margin-left: 60%; border-top: 1px dashed #1d4354">
@@ -136,18 +145,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-group" id="list-tab" role="tablist" style="margin-top: 110px">
-                                    <div :key="index"
-                                         v-bind:class="[ activeTab === index ? 'active' : 'non-active']"
-                                         v-for="(argument, index) of getActiveMasterData.masterData.detail_data"
-                                         @click.stop.prevent="setActiveTab(index)"
-                                         style="margin-bottom: 10px; margin-top: 15px; padding: 10px; border-radius: 4px">
-                                        <div :ref="getRefId(index)" :id="getRefId(index)" class="detail-wrapper">
+                                <div class="list-group" id="list-tab" role="tablist" style="margin-top: 110px;">
+                                    <virtual-list :size="40" :remain="8" style="height: 75vh; padding-right: 5px;">
+                                        <div :key="index" :ref="getRefId(index)" :id="getRefId(index)"
+                                             v-bind:class="[ activeTab === index ? 'active' : 'non-active']"
+                                             v-for="(argument, index) of getActiveMasterData.masterData.detail_data"
+                                             @click.stop.prevent="setActiveTab(index)"
+                                             style="margin-bottom: 10px; margin-top: 15px; padding: 10px; border-radius: 4px; height: 150px">
                                             <div class="row" style="margin-bottom: 15px; margin-top: 15px">
                                                 <div id="col-sq-start" class="col-md-1 align-self-center">
                                                     <div class="detail-duration">
                                                         <input class="form-control" id="seq_no" type="text" maxlength="10"
                                                                v-model="argument.seq_no"
+                                                               style="padding-left: 5px"
                                                                @change.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.seq_no>
                                                     </div>
@@ -213,7 +223,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </virtual-list>
                                 </div>
                             </div>
                         </div>
@@ -239,6 +249,7 @@
     const moment = require('moment');
     import uuid from 'uuid/v4';
     import firebase from "firebase";
+    import virtualList from 'vue-virtual-scroll-list';
     const fb = require('../firebaseConfig.js');
 
     export default {
@@ -253,17 +264,22 @@
                 enableEdit: null,
                 enableUpdate: [],
                 processing: false,
+                loadingData: false,
                 playSequence: [],
                 drawBox: null,
                 boxId: null,
                 animationString: '',
                 playNow: false,
+                continuePlaying: false,
                 enterClass: 'box',
                 tempDuration: '1',
                 tempRC: 1,
                 tempEntries: 0,
                 box: 'background-color: rgb(243, 246, 249);'
             }
+        },
+        components: {
+            'virtual-list': virtualList,
         },
         created() {
             firebase.auth().onAuthStateChanged(user => {
@@ -291,7 +307,7 @@
                 this.box = 'background-color: rgb(243, 246, 249)';
             },
             async start(counter) {
-                if(counter < this.playSequence.length) {
+                if((counter < this.playSequence.length) && this.continuePlaying) {
                     if (this.playSequence[counter].time > 0) {
                         if (this.playSequence[counter].color === '0xFFFFFF') {
                             this.whiteBox();
@@ -438,10 +454,11 @@
                 const index = this.getActiveMasterData.masterData.detail_data.length > 0 ? (this.getActiveMasterData.masterData.detail_data.length - 1) : 0;
                 document.getElementById("entry_name_seq_" + index).focus();
             },
-            addTestData(){
+            async addTestData(){
                 console.log('start setting up test data');
                 this.getActiveMasterData.masterData.detail_data = [];
 
+                this.loadingData = true;
                 const tempData = [];
                 const testEntries = parseInt(this.tempEntries);
                 if (testEntries > 0) {
@@ -472,10 +489,12 @@
                         userInfo: this.getActiveMasterData.userInfo
                     };
                     this.$store.dispatch('setActiveMasterDataAction', payload);
+                    await this.wait(1500);
+                    this.loadingData = false;
                 }
 
             },
-            startProcessing() {
+            async startProcessing() {
                 console.log('start processing data');
 
                 this.processing = true;
@@ -495,14 +514,16 @@
                 }
 
                 this.playSequence = playbackSequence;
+                this.enterClass = 'newBox';
+                await this.wait(1000);
                 this.processing = false;
                 this.playNow = true;
-                this.enterClass = 'newBox'
             },
             playAll() {
                 console.log('play button pressed');
                 if (!this.processing && this.playSequence.length > 0) {
                     this.playNow = true;
+                    this.continuePlaying = true;
                     this.boxStyle();
                 }
             },
@@ -518,7 +539,7 @@
                     };
                     this.playSequence = [];
                     this.playSequence.push(payload);
-
+                    this.continuePlaying = true;
                     this.boxStyle();
                 }
             },
@@ -545,6 +566,7 @@
                     this.playSequence = playbackSequence;
                     this.enterClass = 'newBox';
                     this.processing = false;
+                    this.continuePlaying = true;
 
                     this.boxStyle();
                 }
@@ -568,10 +590,8 @@
                     this.$store.dispatch('setActiveMasterDataAction', payload);
                 }
             },
-            focusInput(index) {
-                const id = "entry_name_seq_" + index;
-                console.log(id);
-                document.getElementById("\""+ id +"\"").focus();
+            stopPlaying() {
+                this.continuePlaying = false;
             },
             getRefId(index) {
                 return 'seq_' + index;
@@ -582,8 +602,11 @@
 
 
 <style scoped>
+    .scroller {
+        height: 100%;
+    }
     .boxStyle {
-        margin-top: 10px; padding: 10px; width: 80vh; height: 75vh; background-color: #343a40;
+        margin-top: 10px; padding: 10px; width: 80vh; height: 68vh; background-color: #343a40;
     }
     .left-sidebar {
         position: fixed; top:60px; left: 0; width: 10%; height: 100%; background-color: rgb(29, 67, 84); border-right: 1px solid rgba(0,0,0,.07)
