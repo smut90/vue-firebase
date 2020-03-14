@@ -256,6 +256,7 @@
     import firebase from "firebase";
     import virtualList from 'vue-virtual-scroll-list';
     const fb = require('../firebaseConfig.js');
+    const { processSequence } = require('../service/api');
 
     export default {
         name: "MasterDataList",
@@ -1561,37 +1562,44 @@
             async startProcessing() {
                 this.processing = true;
                 this.playNow = false;
-                const playbackSequence = [];
-                let timeout;
+                // const playbackSequence = [];
+                // let timeout;
+
+                // if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0) {
+                //     this.getActiveMasterData.masterData.detail_data.forEach((detail, i) => {
+                //         const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
+                //
+                //         if (i === 0)  {
+                //             timeout = durationInMillis;
+                //         } else {
+                //             timeout += durationInMillis;
+                //         }
+                //
+                //         const color_level = parseInt(detail.value);
+                //         const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
+                //         const payload = {
+                //             timeout: timeout,
+                //             color: color
+                //         };
+                //         playbackSequence.push(payload);
+                //     })
+                // }
+                //
+                // const endTime = (timeout + 10);
+                // const endPayload = {
+                //     timeout: endTime,
+                //     color: 'rgb(243, 246, 249)'
+                // };
+                // playbackSequence.push(endPayload);
+                // this.playSequence = playbackSequence;
 
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0) {
-                    this.getActiveMasterData.masterData.detail_data.forEach((detail, i) => {
-                        const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
-
-                        if (i === 0)  {
-                            timeout = durationInMillis;
-                        } else {
-                            timeout += durationInMillis;
-                        }
-
-                        const color_level = parseInt(detail.value);
-                        const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
-                        const payload = {
-                            timeout: timeout,
-                            color: color
-                        };
-                        playbackSequence.push(payload);
-                    })
+                    const res = await processSequence(this.getActiveMasterData.masterData.detail_data);
+                    this.playSequence = res.list;
+                } else {
+                    this.playSequence = [];
                 }
 
-                const endTime = (timeout + 10);
-                const endPayload = {
-                    timeout: endTime,
-                    color: 'rgb(243, 246, 249)'
-                };
-                playbackSequence.push(endPayload);
-
-                this.playSequence = playbackSequence;
                 await this.wait(20);
                 this.processing = false;
                 this.playNow = true;
@@ -1603,26 +1611,35 @@
                     this.myMove()
                 }
             },
-            playSelected() {
+            async playSelected() {
                 if (this.activeTab !== null) {
+                    this.processing = true;
                     this.playSequence = [];
                     const activeRow = this.getActiveMasterData.masterData.detail_data[this.activeTab];
-                    const durationInMillis = parseInt(activeRow.duration) * parseInt(activeRow.repeat_count);
-                    const color_level = parseInt(activeRow.value);
-                    const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
-                    const payload = {
-                        timeout: durationInMillis,
-                        color: color
-                    };
+                    // const durationInMillis = parseInt(activeRow.duration) * parseInt(activeRow.repeat_count);
+                    // const color_level = parseInt(activeRow.value);
+                    // const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
+                    // const payload = {
+                    //     timeout: durationInMillis,
+                    //     color: color
+                    // };
+                    //
+                    // const endTime = (durationInMillis + 10);
+                    // const endPayload = {
+                    //     timeout: endTime,
+                    //     color: 'rgb(243, 246, 249)'
+                    // };
+                    //
+                    // this.playSequence.push(payload);
+                    // this.playSequence.push(endPayload);
 
-                    const endTime = (durationInMillis + 10);
-                    const endPayload = {
-                        timeout: endTime,
-                        color: 'rgb(243, 246, 249)'
-                    };
-
-                    this.playSequence.push(payload);
-                    this.playSequence.push(endPayload);
+                    const res = await processSequence([activeRow]);
+                    if (res) {
+                        this.playSequence = res.list;
+                    } else {
+                        this.playSequence = [];
+                    }
+                    this.processing = false;
                     this.continuePlaying = true;
                     this.myMove();
                 }
@@ -1631,39 +1648,49 @@
                 this.processing = true;
                 this.playNow = false;
                 this.playSequence = [];
-                const playbackSequence = [];
-                let timeout;
+                // const playbackSequence = [];
+                // let timeout;
 
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0 && this.activeTab !== null) {
 
-                    for (let i = this.activeTab; i < this.getActiveMasterData.masterData.detail_data.length; i++) {
-                        const detail = this.getActiveMasterData.masterData.detail_data[i];
-                        const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
+                    // for (let i = this.activeTab; i < this.getActiveMasterData.masterData.detail_data.length; i++) {
+                    //     const detail = this.getActiveMasterData.masterData.detail_data[i];
+                    //     const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
+                    //
+                    //     if (i === this.activeTab)  {
+                    //         timeout = durationInMillis;
+                    //     } else {
+                    //         timeout += durationInMillis;
+                    //     }
+                    //
+                    //     const color_level = parseInt(detail.value);
+                    //     const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
+                    //     const payload = {
+                    //         timeout: timeout,
+                    //         color: color
+                    //     };
+                    //     playbackSequence.push(payload);
+                    // }
+                    //
+                    // const endTime = (timeout + 10);
+                    // const endPayload = {
+                    //     timeout: endTime,
+                    //     color: 'rgb(243, 246, 249)'
+                    // };
+                    // playbackSequence.push(endPayload);
+                    //
+                    // await this.wait(20);
+                    // this.playSequence = playbackSequence;
 
-                        if (i === this.activeTab)  {
-                            timeout = durationInMillis;
-                        } else {
-                            timeout += durationInMillis;
-                        }
 
-                        const color_level = parseInt(detail.value);
-                        const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
-                        const payload = {
-                            timeout: timeout,
-                            color: color
-                        };
-                        playbackSequence.push(payload);
+                    const seqList = this.getActiveMasterData.masterData.detail_data.slice(this.activeTab);
+                    const res = await processSequence(seqList);
+                    if (res) {
+                        this.playSequence = res.list;
+                    } else {
+                        this.playSequence = [];
                     }
 
-                    const endTime = (timeout + 10);
-                    const endPayload = {
-                        timeout: endTime,
-                        color: 'rgb(243, 246, 249)'
-                    };
-                    playbackSequence.push(endPayload);
-
-                    await this.wait(20);
-                    this.playSequence = playbackSequence;
                     this.processing = false;
                     this.continuePlaying = true;
                     this.myMove();
