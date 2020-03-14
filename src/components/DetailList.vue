@@ -47,7 +47,12 @@
                             <span class="sr-only">Loading...</span>
                         </div>
                     </div>
-                    <div v-else class="boxStyle" :style="box"></div>
+                    <div v-else>
+                        <div id ="container" style="background-color: rgb(243, 246, 249);">
+                            <div id ="animate"></div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="row" style="margin-bottom: 15px;">
                     <div class="d-flex justify-content-center ml-auto mr-auto" >
@@ -96,7 +101,7 @@
                     <div v-if=!getActiveMasterData.masterData>
                         <p>Loading ... </p>
                     </div>
-                    <div class="container-fluid" v-else>
+                    <div v-else  class="container-fluid" style="padding-right: 0;">
                         <div class="row display-master-data">
                             <div class="col-md-12" style="margin-bottom: 40px">
                                 <div class="fixed-top" style="color: rgba(255, 255, 255, 0.75); box-shadow: black 0 8px 6px -6px; margin-top: 61px; margin-right: 40%; background-color: rgb(29, 67, 84)">
@@ -146,12 +151,12 @@
                                     </div>
                                 </div>
                                 <div class="list-group" id="list-tab" role="tablist" style="margin-top: 110px;">
-                                    <virtual-list :size="40" :remain="8" style="height: 75vh; padding-right: 5px;">
+                                    <virtual-list id="virtual-list-style" :size="40" :remain="8" style="height: 75vh; padding-right: 15px;">
                                         <div :key="index" :ref="getRefId(index)" :id="getRefId(index)"
                                              v-bind:class="[ activeTab === index ? 'active' : 'non-active']"
                                              v-for="(argument, index) of getActiveMasterData.masterData.detail_data"
                                              @click.stop.prevent="setActiveTab(index)"
-                                             style="margin-bottom: 10px; margin-top: 15px; padding: 10px; border-radius: 4px; height: 150px">
+                                             style="margin-bottom: 10px; margin-top: 15px; padding: 10px; border-radius: 4px; height: 140px">
                                             <div class="row" style="margin-bottom: 15px; margin-top: 15px">
                                                 <div id="col-sq-start" class="col-md-1 align-self-center">
                                                     <div class="detail-duration">
@@ -266,16 +271,1087 @@
                 processing: false,
                 loadingData: false,
                 playSequence: [],
-                drawBox: null,
                 boxId: null,
                 animationString: '',
                 playNow: false,
                 continuePlaying: false,
-                enterClass: 'box',
                 tempDuration: '1',
                 tempRC: 1,
                 tempEntries: 0,
-                box: 'background-color: rgb(243, 246, 249);'
+                accentColor: '#000',
+                animSequence: [
+                    {
+                        duration: 17530,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 1
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
+                        seq_no: 2
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 230,
+                        seq_no: 3
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 205,
+                        seq_no: 4
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 192,
+                        seq_no: 5
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 179,
+                        seq_no: 6
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 166,
+                        seq_no: 7
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 154,
+                        seq_no: 8
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 9
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 115,
+                        seq_no: 10
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 102,
+                        seq_no: 11
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 90,
+                        seq_no: 12
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 77,
+                        seq_no: 13
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 64,
+                        seq_no: 14
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 51,
+                        seq_no: 15
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 38,
+                        seq_no: 16
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
+                        seq_no: 17
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 13,
+                        seq_no: 18
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 19
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 20
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 21
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
+                        seq_no: 22
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 230,
+                        seq_no: 23
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 205,
+                        seq_no: 24
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 192,
+                        seq_no: 25
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 179,
+                        seq_no: 26
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 166,
+                        seq_no: 27
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 154,
+                        seq_no: 28
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 29
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 115,
+                        seq_no: 30
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 102,
+                        seq_no: 31
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 90,
+                        seq_no: 32
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 77,
+                        seq_no: 33
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 64,
+                        seq_no: 34
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 51,
+                        seq_no: 35
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 38,
+                        seq_no: 36
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
+                        seq_no: 37
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 13,
+                        seq_no: 38
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 39
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 40
+                    },
+                    {
+                        duration: 36,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 41
+                    },
+                    {
+                        duration: 180,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 42
+                    },
+                    {
+                        duration: 180,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 192,
+                        seq_no: 43
+                    },
+                    {
+                        duration: 340,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
+                        seq_no: 44
+                    },
+                    {
+                        duration: 350,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 38,
+                        seq_no: 45
+                    },
+                    {
+                        duration: 530,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 46
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
+                        seq_no: 47
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 230,
+                        seq_no: 48
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 205,
+                        seq_no: 49
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 192,
+                        seq_no: 50
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 179,
+                        seq_no: 51
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 166,
+                        seq_no: 52
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 154,
+                        seq_no: 53
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 54
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 115,
+                        seq_no: 55
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 102,
+                        seq_no: 56
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 90,
+                        seq_no: 57
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 77,
+                        seq_no: 58
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 64,
+                        seq_no: 59
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 51,
+                        seq_no: 60
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 38,
+                        seq_no: 61
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
+                        seq_no: 62
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 13,
+                        seq_no: 63
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 64
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 65
+                    },
+                    {
+                        duration: 35,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 66
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
+                        seq_no: 67
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 230,
+                        seq_no: 68
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 205,
+                        seq_no: 69
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 192,
+                        seq_no: 70
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 179,
+                        seq_no: 71
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 166,
+                        seq_no: 72
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 154,
+                        seq_no: 73
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 74
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 115,
+                        seq_no: 75
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 102,
+                        seq_no: 76
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 90,
+                        seq_no: 77
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 77,
+                        seq_no: 78
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 64,
+                        seq_no: 79
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 51,
+                        seq_no: 80
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 38,
+                        seq_no: 81
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
+                        seq_no: 82
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 13,
+                        seq_no: 83
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 84
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 84
+                    },
+                    {
+                        duration: 36,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 85
+                    },
+                    {
+                        duration: 180,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 86
+                    },
+                    {
+                        duration: 180,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 192,
+                        seq_no: 87
+                    },
+                    {
+                        duration: 340,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
+                        seq_no: 88
+                    },
+                    {
+                        duration: 350,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 38,
+                        seq_no: 89
+                    },
+                    {
+                        duration: 530,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 90
+                    },
+                    {
+                        duration: 180,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
+                        seq_no: 91
+                    },
+                    {
+                        duration: 340,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 192,
+                        seq_no: 92
+                    },
+                    {
+                        duration: 360,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 93
+                    },
+                    {
+                        duration: 520,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
+                        seq_no: 93
+                    },
+                    {
+                        duration: 180,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
+                        seq_no: 93
+                    },
+                    {
+                        duration: 340,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
+                        seq_no: 94
+                    },
+                    {
+                        duration: 360,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 94
+                    },
+                    {
+                        duration: 340,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
+                        seq_no: 94
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
+                        seq_no: 95
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 230,
+                        seq_no: 96
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 205,
+                        seq_no: 97
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 192,
+                        seq_no: 98
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 179,
+                        seq_no: 99
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 166,
+                        seq_no: 100
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 154,
+                        seq_no: 101
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 102
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 115,
+                        seq_no: 103
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 102,
+                        seq_no: 104
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 90,
+                        seq_no: 105
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 77,
+                        seq_no: 106
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 64,
+                        seq_no: 107
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 51,
+                        seq_no: 108
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 38,
+                        seq_no: 109
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
+                        seq_no: 110
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 13,
+                        seq_no: 111
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 112
+                    },
+                    {
+                        duration: 111,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 113
+                    },
+                    {
+                        duration: 121,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
+                        seq_no: 114
+                    }
+                ]
             }
         },
         components: {
@@ -292,8 +1368,9 @@
             })
         },
         methods: {
-            async boxStyle(){
+            async boxStyle() {
                 if (this.playSequence && this.playSequence.length > 0) {
+                    console.log('START', new Date().getTime());
                     this.start(0);
                 }
             },
@@ -307,33 +1384,26 @@
                 this.box = 'background-color: rgb(243, 246, 249)';
             },
             async start(counter) {
-                if((counter < this.playSequence.length) && this.continuePlaying) {
+                if ((counter < this.playSequence.length) && this.continuePlaying) {
                     if (this.playSequence[counter].time > 0) {
-                        if (this.playSequence[counter].color === '0xFFFFFF') {
-                            this.whiteBox();
-                            await this.wait(this.playSequence[counter].time);
 
-                        } else {
-                            this.blackBox();
-                            await this.wait(this.playSequence[counter].time);
-
-                        }
+                        document.querySelector('.boxStyle').style.backgroundColor = this.playSequence[counter].color;
+                        await this.wait((this.playSequence[counter].time));
                     }
-                    const next = counter + 1;
-                    this.start(next);
+                    this.start(counter + 1);
 
                 } else {
-                    this.originalBox();
+                    document.querySelector('.boxStyle').style.backgroundColor = 'rgb(243, 246, 249)';
                 }
             },
             wait(ms) {
                 return new Promise((resolve) => {
                     setTimeout(() => {
-                        resolve(ms)
-                    },ms)
+                        resolve()
+                    }, ms)
                 })
             },
-            setActiveTab(tab){
+            setActiveTab(tab) {
                 this.activeTab = tab;
             },
             enableUpdateButton(index) {
@@ -343,16 +1413,13 @@
                 e.stopPropagation();
                 firebase.auth().signOut();
                 this.$store.dispatch('cleanCurrentUserStateAction');
-                this.$router.push({ name: "Login" });
+                this.$router.push({name: "Login"});
             },
             daysAgo(createdAt) {
                 return moment(createdAt).fromNow();
             },
-            runSequence(){
-                this.$router.push({ name: 'RunSequence'});
-            },
-            navigateToMaster(){
-                this.$router.push({ name: 'Profile'});
+            navigateToMaster() {
+                this.$router.push({name: 'Profile'});
             },
             seqNoChange(seqNo) {
                 console.log("changing seq no to ", seqNo);
@@ -373,28 +1440,26 @@
                 };
                 this.$store.dispatch('setActiveMasterDataAction', payload);
             },
-            editMasterData(index){
+            editMasterData(index) {
                 this.editSlot = index;
                 this.enableEdit = index
             },
             replacePlaceholder(value) {
                 return value ? value : 'Start typing something ...'
             },
-            replacePlaceholderUrl(value){
+            replacePlaceholderUrl(value) {
                 return value ? value : 'http://...'
             },
-            replaceDescPlaceholderReadView(value){
+            replaceDescPlaceholderReadView(value) {
                 return value ? value : 'description section is empty';
             },
             replaceLinkPlaceholderReadView(value) {
                 return value ? value : 'no external url added';
             },
-            navigateTo(link){
+            navigateTo(link) {
                 window.location.href = link;
             },
             onDetailSave(index, detail) {
-                console.log('saving data details ', index, detail);
-
                 this.getActiveMasterData.masterData.detail_data[index] = detail;
 
                 this.getActiveMasterData.masterData.detail_data.sort(function (a, b) {
@@ -417,8 +1482,6 @@
                 this.$store.dispatch('setActiveMasterDataAction', payload);
             },
             async addDetailData() {
-                console.log('adding new detail data');
-
                 this.getActiveMasterData.masterData.detail_data.sort(function (a, b) {
                     return a.seq_no - b.seq_no;
                 });
@@ -432,7 +1495,7 @@
                     entry_name: "",
                     entry_type: 0,
                     extra_data: "",
-                    repeat_count: 0,
+                    repeat_count: 1,
                     value: 0,
                     seq_no: newHighestSeqNo
                 });
@@ -454,125 +1517,160 @@
                 const index = this.getActiveMasterData.masterData.detail_data.length > 0 ? (this.getActiveMasterData.masterData.detail_data.length - 1) : 0;
                 document.getElementById("entry_name_seq_" + index).focus();
             },
-            async addTestData(){
-                console.log('start setting up test data');
+            async addTestData() {
+                // console.log('start setting up test data');
                 this.getActiveMasterData.masterData.detail_data = [];
 
                 this.loadingData = true;
-                const tempData = [];
-                const testEntries = parseInt(this.tempEntries);
-                if (testEntries > 0) {
-                    for(let i=0; i < testEntries; i++) {
-                        const payload = {
-                            duration: parseInt(this.tempDuration),
-                            entry_name: "",
-                            entry_type: 0,
-                            extra_data: "",
-                            repeat_count: parseInt(this.tempRC),
-                            value: 0,
-                            seq_no: i
-                        };
-                        tempData.push(payload);
-                    }
+                // const tempData = [];
+                // const testEntries = parseInt(this.tempEntries);
+                // if (testEntries > 0) {
+                //     for(let i=0; i < testEntries; i++) {
+                //         const payload = {
+                //             duration: parseInt(this.tempDuration),
+                //             entry_name: "",
+                //             entry_type: 0,
+                //             extra_data: "",
+                //             repeat_count: parseInt(this.tempRC),
+                //             value: 0,
+                //             seq_no: i
+                //         };
+                //         tempData.push(payload);
+                //     }
 
-                    this.getActiveMasterData.masterData.detail_data = tempData;
+                // this.getActiveMasterData.masterData.detail_data = tempData;
+                this.getActiveMasterData.masterData.detail_data = this.animSequence;
 
-                    fb.usersCollection.doc(this.getActiveMasterData.userInfo.uid).collection('master').doc(this.getActiveMasterData.masterId)
-                        .set(this.getActiveMasterData.masterData, {merge: true}).catch(err => {
-                        console.log(err)
-                    });
+                fb.usersCollection.doc(this.getActiveMasterData.userInfo.uid).collection('master').doc(this.getActiveMasterData.masterId)
+                    .set(this.getActiveMasterData.masterData, {merge: true}).catch(err => {
+                    console.log(err)
+                });
 
-                    const payload = {
-                        id: uuid(),
-                        masterId: this.getActiveMasterData.masterId,
-                        masterData: this.getActiveMasterData.masterData,
-                        userInfo: this.getActiveMasterData.userInfo
-                    };
-                    this.$store.dispatch('setActiveMasterDataAction', payload);
-                    await this.wait(1500);
-                    this.loadingData = false;
-                }
+                const payload = {
+                    id: uuid(),
+                    masterId: this.getActiveMasterData.masterId,
+                    masterData: this.getActiveMasterData.masterData,
+                    userInfo: this.getActiveMasterData.userInfo
+                };
+                this.$store.dispatch('setActiveMasterDataAction', payload);
+                await this.wait(1500);
+                this.loadingData = false;
+                // }
 
             },
             async startProcessing() {
-                console.log('start processing data');
-
                 this.processing = true;
                 this.playNow = false;
                 const playbackSequence = [];
+                let timeout;
 
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0) {
                     this.getActiveMasterData.masterData.detail_data.forEach((detail, i) => {
                         const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
-                        const color = i%2 === 0 ? '0x000000': '0xFFFFFF';
+
+                        if (i === 0)  {
+                            timeout = durationInMillis;
+                        } else {
+                            timeout += durationInMillis;
+                        }
+
+                        const color_level = parseInt(detail.value);
+                        const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
                         const payload = {
-                            time: durationInMillis,
+                            timeout: timeout,
                             color: color
                         };
                         playbackSequence.push(payload);
                     })
                 }
 
+                const endTime = (timeout + 10);
+                const endPayload = {
+                    timeout: endTime,
+                    color: 'rgb(243, 246, 249)'
+                };
+                playbackSequence.push(endPayload);
+
                 this.playSequence = playbackSequence;
-                this.enterClass = 'newBox';
-                await this.wait(1000);
+                await this.wait(20);
                 this.processing = false;
                 this.playNow = true;
             },
             playAll() {
-                console.log('play button pressed');
                 if (!this.processing && this.playSequence.length > 0) {
                     this.playNow = true;
                     this.continuePlaying = true;
-                    this.boxStyle();
+                    this.myMove()
                 }
             },
             playSelected() {
-                console.log('play selected button pressed');
                 if (this.activeTab !== null) {
+                    this.playSequence = [];
                     const activeRow = this.getActiveMasterData.masterData.detail_data[this.activeTab];
                     const durationInMillis = parseInt(activeRow.duration) * parseInt(activeRow.repeat_count);
-                    const color = this.activeTab % 2 === 0 ? '0x000000': '0xFFFFFF';
+                    const color_level = parseInt(activeRow.value);
+                    const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
                     const payload = {
-                        time: durationInMillis,
+                        timeout: durationInMillis,
                         color: color
                     };
-                    this.playSequence = [];
+
+                    const endTime = (durationInMillis + 10);
+                    const endPayload = {
+                        timeout: endTime,
+                        color: 'rgb(243, 246, 249)'
+                    };
+
                     this.playSequence.push(payload);
+                    this.playSequence.push(endPayload);
                     this.continuePlaying = true;
-                    this.boxStyle();
+                    this.myMove();
                 }
             },
-            playFrom() {
-                console.log('play from button pressed');
-
+            async playFrom() {
                 this.processing = true;
                 this.playNow = false;
+                this.playSequence = [];
                 const playbackSequence = [];
+                let timeout;
 
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0 && this.activeTab !== null) {
 
-                    for(let i = this.activeTab; i < this.getActiveMasterData.masterData.detail_data.length; i++) {
+                    for (let i = this.activeTab; i < this.getActiveMasterData.masterData.detail_data.length; i++) {
                         const detail = this.getActiveMasterData.masterData.detail_data[i];
                         const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
-                        const color = i%2 === 0 ? '0x000000': '0xFFFFFF';
+
+                        if (i === this.activeTab)  {
+                            timeout = durationInMillis;
+                        } else {
+                            timeout += durationInMillis;
+                        }
+
+                        const color_level = parseInt(detail.value);
+                        const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
                         const payload = {
-                            time: durationInMillis,
+                            timeout: timeout,
                             color: color
                         };
                         playbackSequence.push(payload);
                     }
 
+                    const endTime = (timeout + 10);
+                    const endPayload = {
+                        timeout: endTime,
+                        color: 'rgb(243, 246, 249)'
+                    };
+                    playbackSequence.push(endPayload);
+
+                    await this.wait(20);
                     this.playSequence = playbackSequence;
-                    this.enterClass = 'newBox';
                     this.processing = false;
                     this.continuePlaying = true;
-
-                    this.boxStyle();
+                    this.myMove();
                 }
             },
             removeSelected() {
-                console.log('remove selected button pressed');
+                // console.log('remove selected button pressed');
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0) {
                     this.getActiveMasterData.masterData.detail_data.splice(this.activeTab, 1);
 
@@ -595,6 +1693,45 @@
             },
             getRefId(index) {
                 return 'seq_' + index;
+            },
+            myMove() {
+                const sequenceList = this.playSequence;
+                let playBackIndex = 0;
+                const numEntries = sequenceList.length;
+                let startTime = new Date();
+                let endMillis = 0;
+                let color;
+                let currentColor;
+
+                if (numEntries > 0) {
+                    endMillis = sequenceList[playBackIndex].timeout;
+                    color = sequenceList[playBackIndex].color;
+                }
+
+                let id = setInterval(() => {
+                    if (this.continuePlaying) {
+                        frame();
+                    }
+                }, 1);
+
+                function frame() {
+                    let elem = document.getElementById("container");
+                    let currentTime = new Date();
+                    if ((playBackIndex < numEntries)) {
+                        while (((currentTime - startTime) > endMillis) &&
+                        (playBackIndex < numEntries)) {
+                            endMillis = sequenceList[playBackIndex].timeout;
+                            color = sequenceList[playBackIndex].color;
+                            playBackIndex++;
+                        }
+                        if (color !== currentColor) {
+                            elem.style.background = color;
+                            currentColor = color;
+                        }
+                    } else {
+                        clearInterval(id);
+                    }
+                }
             }
         }
     }
@@ -602,11 +1739,27 @@
 
 
 <style scoped>
+    #virtual-list-style::-webkit-scrollbar {
+        background-color: rgb(243, 246, 249);
+        border-radius: 10px;
+        width: 15px;
+    }
+    #virtual-list-style::-webkit-scrollbar-thumb {
+        background-color: #4f566b;
+        border-radius: 10px;
+    }
+    #container {
+        width: 75vh;
+        height: 68vh;
+        background: rgb(243, 246, 249);
+    }
     .scroller {
         height: 100%;
     }
     .boxStyle {
-        margin-top: 10px; padding: 10px; width: 80vh; height: 68vh; background-color: #343a40;
+        /*margin-top: 10px; padding: 10px; width: 80vh; height: 68vh; background-color: #343a40;*/
+        /*margin-top: 10px; padding: 10px; width: 200px; height: 200px;*/
+        margin-top: 10px; padding: 10px; width: 80vh; height: 68vh;
     }
     .left-sidebar {
         position: fixed; top:60px; left: 0; width: 10%; height: 100%; background-color: rgb(29, 67, 84); border-right: 1px solid rgba(0,0,0,.07)
@@ -625,6 +1778,9 @@
     }
     .static-top {
         position: fixed; top:60px; height: 70px;
+    }
+    .box-again {
+        animation: toBlack 10ms ease-in;
     }
     .pointer {
         cursor: pointer;

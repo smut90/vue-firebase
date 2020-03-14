@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Login from './components/Login'
 import Profile from './components/Profile'
 import DetailList from './components/DetailList'
-import RunSequence from './components/RunSequence'
 import firebase from 'firebase'
 
 Vue.use(Router);
@@ -29,14 +28,6 @@ let router = new Router({
                 name: 'Details',
                 component: DetailList,
                 props: true,
-                meta: {
-                    auth: true
-                }
-            },
-            {
-                path: '/run',
-                name: 'RunSequence',
-                component: RunSequence,
                 meta: {
                     auth: true
                 }
