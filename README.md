@@ -29,3 +29,8 @@ firebase serve
 ```
 firebase deploy
 ```
+
+### Deploy to firebase functions
+```
+firebase deploy --only functions
+```

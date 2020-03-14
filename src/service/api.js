@@ -15,7 +15,7 @@ const processSequence = async (seqList) => {
         payload: seqList
     };
 
-    const url = 'http://' + HOST + '' + PATH;
+    const url = 'https://' + HOST + '' + PATH;
 
     return await axios.post(url, requestPayload,{
         headers: headers
