@@ -26,3 +26,5 @@ yarn-error.log*
 
 service-account-credentials.json
 **/package-lock.json
+
+yarn.lock
