@@ -1,12 +1,12 @@
 {
     animSequence: [
         {
-            duration: 35,
+            duration: 17530,
             entry_name: "",
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 1
         },
         {
@@ -15,7 +15,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(256, 0, 0)',
+            value: 256,
             seq_no: 2
         },
         {
@@ -24,7 +24,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(230, 0, 0)',
+            value: 230,
             seq_no: 3
         },
         {
@@ -33,7 +33,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(205, 0, 0)',
+            value: 205,
             seq_no: 4
         },
         {
@@ -42,7 +42,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(192, 0, 0)',
+            value: 192,
             seq_no: 5
         },
         {
@@ -51,7 +51,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(179, 0, 0)',
+            value: 179,
             seq_no: 6
         },
         {
@@ -60,7 +60,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(166, 0, 0)',
+            value: 166,
             seq_no: 7
         },
         {
@@ -69,7 +69,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(154, 0, 0)',
+            value: 154,
             seq_no: 8
         },
         {
@@ -78,7 +78,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
             seq_no: 9
         },
         {
@@ -87,7 +87,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(115, 0, 0)',
+            value: 115,
             seq_no: 10
         },
         {
@@ -96,7 +96,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(102, 0, 0)',
+            value: 102,
             seq_no: 11
         },
         {
@@ -105,7 +105,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(90, 0, 0)',
+            value: 90,
             seq_no: 12
         },
         {
@@ -114,7 +114,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(77, 0, 0)',
+            value: 77,
             seq_no: 13
         },
         {
@@ -123,7 +123,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(64, 0, 0)',
+            value: 64,
             seq_no: 14
         },
         {
@@ -132,7 +132,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(51, 0, 0)',
+            value: 51,
             seq_no: 15
         },
         {
@@ -141,7 +141,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(38, 0, 0)',
+            value: 38,
             seq_no: 16
         },
         {
@@ -150,7 +150,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(26, 0, 0)',
+            value: 26,
             seq_no: 17
         },
         {
@@ -159,7 +159,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(13, 0, 0)',
+            value: 13,
             seq_no: 18
         },
         {
@@ -168,7 +168,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 19
         },
         {
@@ -177,7 +177,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 20
         },
         {
@@ -186,7 +186,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 21
         },
         {
@@ -195,7 +195,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(256, 0, 0)',
+            value: 256,
             seq_no: 22
         },
         {
@@ -204,7 +204,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(230, 0, 0)',
+            value: 230,
             seq_no: 23
         },
         {
@@ -213,7 +213,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(205, 0, 0)',
+            value: 205,
             seq_no: 24
         },
         {
@@ -222,7 +222,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(192, 0, 0)',
+            value: 192,
             seq_no: 25
         },
         {
@@ -231,7 +231,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(179, 0, 0)',
+            value: 179,
             seq_no: 26
         },
         {
@@ -240,7 +240,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(166, 0, 0)',
+            value: 166,
             seq_no: 27
         },
         {
@@ -249,7 +249,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(154, 0, 0)',
+            value: 154,
             seq_no: 28
         },
         {
@@ -258,7 +258,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
             seq_no: 29
         },
         {
@@ -267,7 +267,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(115, 0, 0)',
+            value: 115,
             seq_no: 30
         },
         {
@@ -276,7 +276,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(102, 0, 0)',
+            value: 102,
             seq_no: 31
         },
         {
@@ -285,7 +285,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(90, 0, 0)',
+            value: 90,
             seq_no: 32
         },
         {
@@ -294,7 +294,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(77, 0, 0)',
+            value: 77,
             seq_no: 33
         },
         {
@@ -303,7 +303,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(64, 0, 0)',
+            value: 64,
             seq_no: 34
         },
         {
@@ -312,7 +312,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(51, 0, 0)',
+            value: 51,
             seq_no: 35
         },
         {
@@ -321,7 +321,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(38, 0, 0)',
+            value: 38,
             seq_no: 36
         },
         {
@@ -330,7 +330,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(26, 0, 0)',
+            value: 26,
             seq_no: 37
         },
         {
@@ -339,7 +339,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(13, 0, 0)',
+            value: 13,
             seq_no: 38
         },
         {
@@ -348,7 +348,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 39
         },
         {
@@ -357,7 +357,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 40
         },
         {
@@ -366,7 +366,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 41
         },
         {
@@ -375,7 +375,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
             seq_no: 42
         },
         {
@@ -384,7 +384,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(192, 0, 0)',
+            value: 192,
             seq_no: 43
         },
         {
@@ -393,7 +393,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(256, 0, 0)',
+            value: 256,
             seq_no: 44
         },
         {
@@ -402,7 +402,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(38, 0, 0)',
+            value: 38,
             seq_no: 45
         },
         {
@@ -411,7 +411,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
             seq_no: 46
         },
         {
@@ -420,7 +420,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(256, 0, 0)',
+            value: 256,
             seq_no: 47
         },
         {
@@ -429,7 +429,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(230, 0, 0)',
+            value: 230,
             seq_no: 48
         },
         {
@@ -438,7 +438,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(205, 0, 0)',
+            value: 205,
             seq_no: 49
         },
         {
@@ -447,7 +447,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(192, 0, 0)',
+            value: 192,
             seq_no: 50
         },
         {
@@ -456,7 +456,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(179, 0, 0)',
+            value: 179,
             seq_no: 51
         },
         {
@@ -465,7 +465,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(166, 0, 0)',
+            value: 166,
             seq_no: 52
         },
         {
@@ -474,7 +474,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(154, 0, 0)',
+            value: 154,
             seq_no: 53
         },
         {
@@ -483,7 +483,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
             seq_no: 54
         },
         {
@@ -492,7 +492,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(115, 0, 0)',
+            value: 115,
             seq_no: 55
         },
         {
@@ -501,7 +501,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(102, 0, 0)',
+            value: 102,
             seq_no: 56
         },
         {
@@ -510,7 +510,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(90, 0, 0)',
+            value: 90,
             seq_no: 57
         },
         {
@@ -519,7 +519,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(77, 0, 0)',
+            value: 77,
             seq_no: 58
         },
         {
@@ -528,7 +528,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(64, 0, 0)',
+            value: 64,
             seq_no: 59
         },
         {
@@ -537,7 +537,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(51, 0, 0)',
+            value: 51,
             seq_no: 60
         },
         {
@@ -546,7 +546,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(38, 0, 0)',
+            value: 38,
             seq_no: 61
         },
         {
@@ -555,7 +555,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(26, 0, 0)',
+            value: 26,
             seq_no: 62
         },
         {
@@ -564,7 +564,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(13, 0, 0)',
+            value: 13,
             seq_no: 63
         },
         {
@@ -573,7 +573,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 64
         },
         {
@@ -582,7 +582,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 65
         },
         {
@@ -591,7 +591,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 66
         },
         {
@@ -600,7 +600,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(256, 0, 0)',
+            value: 256,
             seq_no: 67
         },
         {
@@ -609,7 +609,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(230, 0, 0)',
+            value: 230,
             seq_no: 68
         },
         {
@@ -618,7 +618,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(205, 0, 0)',
+            value: 205,
             seq_no: 69
         },
         {
@@ -627,7 +627,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(192, 0, 0)',
+            value: 192,
             seq_no: 70
         },
         {
@@ -636,7 +636,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(179, 0, 0)',
+            value: 179,
             seq_no: 71
         },
         {
@@ -645,7 +645,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(166, 0, 0)',
+            value: 166,
             seq_no: 72
         },
         {
@@ -654,7 +654,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(154, 0, 0)',
+            value: 154,
             seq_no: 73
         },
         {
@@ -663,7 +663,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
             seq_no: 74
         },
         {
@@ -672,7 +672,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(115, 0, 0)',
+            value: 115,
             seq_no: 75
         },
         {
@@ -681,7 +681,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(102, 0, 0)',
+            value: 102,
             seq_no: 76
         },
         {
@@ -690,7 +690,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(90, 0, 0)',
+            value: 90,
             seq_no: 77
         },
         {
@@ -699,7 +699,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(77, 0, 0)',
+            value: 77,
             seq_no: 78
         },
         {
@@ -708,7 +708,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(64, 0, 0)',
+            value: 64,
             seq_no: 79
         },
         {
@@ -717,7 +717,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(51, 0, 0)',
+            value: 51,
             seq_no: 80
         },
         {
@@ -726,7 +726,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(38, 0, 0)',
+            value: 38,
             seq_no: 81
         },
         {
@@ -735,7 +735,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(26, 0, 0)',
+            value: 26,
             seq_no: 82
         },
         {
@@ -744,7 +744,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(13, 0, 0)',
+            value: 13,
             seq_no: 83
         },
         {
@@ -753,7 +753,16 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
+            seq_no: 84
+        },
+        {
+            duration: 26,
+            entry_name: "",
+            entry_type: 0,
+            extra_data: "",
+            repeat_count: 1,
+            value: 0,
             seq_no: 84
         },
         {
@@ -762,7 +771,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 85
         },
         {
@@ -771,7 +780,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
             seq_no: 86
         },
         {
@@ -780,7 +789,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(192, 0, 0)',
+            value: 192,
             seq_no: 87
         },
         {
@@ -789,7 +798,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(256, 0, 0)',
+            value: 256,
             seq_no: 88
         },
         {
@@ -798,7 +807,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(38, 0, 0)',
+            value: 38,
             seq_no: 89
         },
         {
@@ -807,7 +816,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
             seq_no: 90
         },
         {
@@ -816,7 +825,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(256, 0, 0)',
+            value: 256,
             seq_no: 91
         },
         {
@@ -825,7 +834,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(192, 0, 0)',
+            value: 192,
             seq_no: 92
         },
         {
@@ -834,7 +843,25 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
+            seq_no: 93
+        },
+        {
+            duration: 520,
+            entry_name: "",
+            entry_type: 0,
+            extra_data: "",
+            repeat_count: 1,
+            value: 26,
+            seq_no: 93
+        },
+        {
+            duration: 180,
+            entry_name: "",
+            entry_type: 0,
+            extra_data: "",
+            repeat_count: 1,
+            value: 256,
             seq_no: 93
         },
         {
@@ -843,7 +870,25 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(26, 0, 0)',
+            value: 26,
+            seq_no: 94
+        },
+        {
+            duration: 360,
+            entry_name: "",
+            entry_type: 0,
+            extra_data: "",
+            repeat_count: 1,
+            value: 128,
+            seq_no: 94
+        },
+        {
+            duration: 340,
+            entry_name: "",
+            entry_type: 0,
+            extra_data: "",
+            repeat_count: 1,
+            value: 26,
             seq_no: 94
         },
         {
@@ -852,7 +897,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(256, 0, 0)',
+            value: 256,
             seq_no: 95
         },
         {
@@ -861,7 +906,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(230, 0, 0)',
+            value: 230,
             seq_no: 96
         },
         {
@@ -870,7 +915,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(205, 0, 0)',
+            value: 205,
             seq_no: 97
         },
         {
@@ -879,7 +924,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(192, 0, 0)',
+            value: 192,
             seq_no: 98
         },
         {
@@ -888,7 +933,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(179, 0, 0)',
+            value: 179,
             seq_no: 99
         },
         {
@@ -897,7 +942,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(166, 0, 0)',
+            value: 166,
             seq_no: 100
         },
         {
@@ -906,7 +951,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(154, 0, 0)',
+            value: 154,
             seq_no: 101
         },
         {
@@ -915,7 +960,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(128, 0, 0)',
+            value: 128,
             seq_no: 102
         },
         {
@@ -924,7 +969,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(115, 0, 0)',
+            value: 115,
             seq_no: 103
         },
         {
@@ -933,7 +978,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(102, 0, 0)',
+            value: 102,
             seq_no: 104
         },
         {
@@ -942,7 +987,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(90, 0, 0)',
+            value: 90,
             seq_no: 105
         },
         {
@@ -951,7 +996,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(77, 0, 0)',
+            value: 77,
             seq_no: 106
         },
         {
@@ -960,7 +1005,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(64, 0, 0)',
+            value: 64,
             seq_no: 107
         },
         {
@@ -969,7 +1014,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(51, 0, 0)',
+            value: 51,
             seq_no: 108
         },
         {
@@ -978,7 +1023,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(38, 0, 0)',
+            value: 38,
             seq_no: 109
         },
         {
@@ -987,7 +1032,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(26, 0, 0)',
+            value: 26,
             seq_no: 110
         },
         {
@@ -996,7 +1041,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(13, 0, 0)',
+            value: 13,
             seq_no: 111
         },
         {
@@ -1005,7 +1050,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 112
         },
         {
@@ -1014,7 +1059,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 113
         },
         {
@@ -1023,7 +1068,7 @@
             entry_type: 0,
             extra_data: "",
             repeat_count: 1,
-            value: 'rgb(0, 0, 0)',
+            value: 0,
             seq_no: 114
         }
     ]

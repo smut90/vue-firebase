@@ -48,18 +48,10 @@
                         </div>
                     </div>
                     <div v-else>
-
-                        <div id="box-rock" class="boxStyle" :style="box"></div>
-
-<!--                        <Box-->
-<!--                                :boxStyle="boxDrawStyle"-->
-<!--                                anim-string="background-color: #b4bcc3, width: 200px, height: 200px"-->
-<!--                                prop-bg-col="#b4bcc3"-->
-<!--                                prop-anim-name="heartBeat, bounceOutDown"-->
-<!--                                prop-anim-duration="1000ms, 12000ms"-->
-<!--                        />-->
+                        <div id ="container" style="background-color: rgb(243, 246, 249);">
+                            <div id ="animate"></div>
+                        </div>
                     </div>
-<!--                    <div v-else id="boxStyleNewId" class="boxStyleNew"></div>-->
 
                 </div>
                 <div class="row" style="margin-bottom: 15px;">
@@ -109,7 +101,7 @@
                     <div v-if=!getActiveMasterData.masterData>
                         <p>Loading ... </p>
                     </div>
-                    <div class="container-fluid" v-else>
+                    <div v-else  class="container-fluid" style="padding-right: 0;">
                         <div class="row display-master-data">
                             <div class="col-md-12" style="margin-bottom: 40px">
                                 <div class="fixed-top" style="color: rgba(255, 255, 255, 0.75); box-shadow: black 0 8px 6px -6px; margin-top: 61px; margin-right: 40%; background-color: rgb(29, 67, 84)">
@@ -159,12 +151,12 @@
                                     </div>
                                 </div>
                                 <div class="list-group" id="list-tab" role="tablist" style="margin-top: 110px;">
-                                    <virtual-list :size="40" :remain="8" style="height: 75vh; padding-right: 5px;">
+                                    <virtual-list id="virtual-list-style" :size="40" :remain="8" style="height: 75vh; padding-right: 15px;">
                                         <div :key="index" :ref="getRefId(index)" :id="getRefId(index)"
                                              v-bind:class="[ activeTab === index ? 'active' : 'non-active']"
                                              v-for="(argument, index) of getActiveMasterData.masterData.detail_data"
                                              @click.stop.prevent="setActiveTab(index)"
-                                             style="margin-bottom: 10px; margin-top: 15px; padding: 10px; border-radius: 4px; height: 150px">
+                                             style="margin-bottom: 10px; margin-top: 15px; padding: 10px; border-radius: 4px; height: 140px">
                                             <div class="row" style="margin-bottom: 15px; margin-top: 15px">
                                                 <div id="col-sq-start" class="col-md-1 align-self-center">
                                                     <div class="detail-duration">
@@ -263,7 +255,6 @@
     import uuid from 'uuid/v4';
     import firebase from "firebase";
     import virtualList from 'vue-virtual-scroll-list';
-    // import Box from './Box'
     const fb = require('../firebaseConfig.js');
 
     export default {
@@ -284,29 +275,18 @@
                 animationString: '',
                 playNow: false,
                 continuePlaying: false,
-                enterClass: 'box',
                 tempDuration: '1',
                 tempRC: 1,
                 tempEntries: 0,
                 accentColor: '#000',
-                box: 'background-color: rgb(243, 246, 249)',
-                boxDrawStyle: {
-                    tokens: {
-                        "--bg-color": "rgb(243, 246, 249)",
-                        "--height": "200px",
-                        "--width": "200px",
-                        "--anim": "toBlack 1000ms ease-in",
-                        "--anim-bg-color": "rgb(256, 0, 0)"
-                    }
-                },
                 animSequence: [
                     {
-                        duration: 35,
+                        duration: 17530,
                         entry_name: "",
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 1
                     },
                     {
@@ -315,7 +295,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(256, 0, 0)',
+                        value: 256,
                         seq_no: 2
                     },
                     {
@@ -324,7 +304,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(230, 0, 0)',
+                        value: 230,
                         seq_no: 3
                     },
                     {
@@ -333,7 +313,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(205, 0, 0)',
+                        value: 205,
                         seq_no: 4
                     },
                     {
@@ -342,7 +322,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(192, 0, 0)',
+                        value: 192,
                         seq_no: 5
                     },
                     {
@@ -351,7 +331,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(179, 0, 0)',
+                        value: 179,
                         seq_no: 6
                     },
                     {
@@ -360,7 +340,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(166, 0, 0)',
+                        value: 166,
                         seq_no: 7
                     },
                     {
@@ -369,7 +349,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(154, 0, 0)',
+                        value: 154,
                         seq_no: 8
                     },
                     {
@@ -378,7 +358,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
                         seq_no: 9
                     },
                     {
@@ -387,7 +367,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(115, 0, 0)',
+                        value: 115,
                         seq_no: 10
                     },
                     {
@@ -396,7 +376,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(102, 0, 0)',
+                        value: 102,
                         seq_no: 11
                     },
                     {
@@ -405,7 +385,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(90, 0, 0)',
+                        value: 90,
                         seq_no: 12
                     },
                     {
@@ -414,7 +394,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(77, 0, 0)',
+                        value: 77,
                         seq_no: 13
                     },
                     {
@@ -423,7 +403,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(64, 0, 0)',
+                        value: 64,
                         seq_no: 14
                     },
                     {
@@ -432,7 +412,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(51, 0, 0)',
+                        value: 51,
                         seq_no: 15
                     },
                     {
@@ -441,7 +421,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(38, 0, 0)',
+                        value: 38,
                         seq_no: 16
                     },
                     {
@@ -450,7 +430,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(26, 0, 0)',
+                        value: 26,
                         seq_no: 17
                     },
                     {
@@ -459,7 +439,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(13, 0, 0)',
+                        value: 13,
                         seq_no: 18
                     },
                     {
@@ -468,7 +448,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 19
                     },
                     {
@@ -477,7 +457,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 20
                     },
                     {
@@ -486,7 +466,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 21
                     },
                     {
@@ -495,7 +475,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(256, 0, 0)',
+                        value: 256,
                         seq_no: 22
                     },
                     {
@@ -504,7 +484,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(230, 0, 0)',
+                        value: 230,
                         seq_no: 23
                     },
                     {
@@ -513,7 +493,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(205, 0, 0)',
+                        value: 205,
                         seq_no: 24
                     },
                     {
@@ -522,7 +502,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(192, 0, 0)',
+                        value: 192,
                         seq_no: 25
                     },
                     {
@@ -531,7 +511,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(179, 0, 0)',
+                        value: 179,
                         seq_no: 26
                     },
                     {
@@ -540,7 +520,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(166, 0, 0)',
+                        value: 166,
                         seq_no: 27
                     },
                     {
@@ -549,7 +529,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(154, 0, 0)',
+                        value: 154,
                         seq_no: 28
                     },
                     {
@@ -558,7 +538,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
                         seq_no: 29
                     },
                     {
@@ -567,7 +547,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(115, 0, 0)',
+                        value: 115,
                         seq_no: 30
                     },
                     {
@@ -576,7 +556,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(102, 0, 0)',
+                        value: 102,
                         seq_no: 31
                     },
                     {
@@ -585,7 +565,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(90, 0, 0)',
+                        value: 90,
                         seq_no: 32
                     },
                     {
@@ -594,7 +574,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(77, 0, 0)',
+                        value: 77,
                         seq_no: 33
                     },
                     {
@@ -603,7 +583,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(64, 0, 0)',
+                        value: 64,
                         seq_no: 34
                     },
                     {
@@ -612,7 +592,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(51, 0, 0)',
+                        value: 51,
                         seq_no: 35
                     },
                     {
@@ -621,7 +601,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(38, 0, 0)',
+                        value: 38,
                         seq_no: 36
                     },
                     {
@@ -630,7 +610,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(26, 0, 0)',
+                        value: 26,
                         seq_no: 37
                     },
                     {
@@ -639,7 +619,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(13, 0, 0)',
+                        value: 13,
                         seq_no: 38
                     },
                     {
@@ -648,7 +628,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 39
                     },
                     {
@@ -657,7 +637,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 40
                     },
                     {
@@ -666,7 +646,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 41
                     },
                     {
@@ -675,7 +655,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
                         seq_no: 42
                     },
                     {
@@ -684,7 +664,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(192, 0, 0)',
+                        value: 192,
                         seq_no: 43
                     },
                     {
@@ -693,7 +673,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(256, 0, 0)',
+                        value: 256,
                         seq_no: 44
                     },
                     {
@@ -702,7 +682,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(38, 0, 0)',
+                        value: 38,
                         seq_no: 45
                     },
                     {
@@ -711,7 +691,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
                         seq_no: 46
                     },
                     {
@@ -720,7 +700,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(256, 0, 0)',
+                        value: 256,
                         seq_no: 47
                     },
                     {
@@ -729,7 +709,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(230, 0, 0)',
+                        value: 230,
                         seq_no: 48
                     },
                     {
@@ -738,7 +718,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(205, 0, 0)',
+                        value: 205,
                         seq_no: 49
                     },
                     {
@@ -747,7 +727,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(192, 0, 0)',
+                        value: 192,
                         seq_no: 50
                     },
                     {
@@ -756,7 +736,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(179, 0, 0)',
+                        value: 179,
                         seq_no: 51
                     },
                     {
@@ -765,7 +745,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(166, 0, 0)',
+                        value: 166,
                         seq_no: 52
                     },
                     {
@@ -774,7 +754,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(154, 0, 0)',
+                        value: 154,
                         seq_no: 53
                     },
                     {
@@ -783,7 +763,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
                         seq_no: 54
                     },
                     {
@@ -792,7 +772,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(115, 0, 0)',
+                        value: 115,
                         seq_no: 55
                     },
                     {
@@ -801,7 +781,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(102, 0, 0)',
+                        value: 102,
                         seq_no: 56
                     },
                     {
@@ -810,7 +790,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(90, 0, 0)',
+                        value: 90,
                         seq_no: 57
                     },
                     {
@@ -819,7 +799,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(77, 0, 0)',
+                        value: 77,
                         seq_no: 58
                     },
                     {
@@ -828,7 +808,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(64, 0, 0)',
+                        value: 64,
                         seq_no: 59
                     },
                     {
@@ -837,7 +817,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(51, 0, 0)',
+                        value: 51,
                         seq_no: 60
                     },
                     {
@@ -846,7 +826,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(38, 0, 0)',
+                        value: 38,
                         seq_no: 61
                     },
                     {
@@ -855,7 +835,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(26, 0, 0)',
+                        value: 26,
                         seq_no: 62
                     },
                     {
@@ -864,7 +844,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(13, 0, 0)',
+                        value: 13,
                         seq_no: 63
                     },
                     {
@@ -873,7 +853,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 64
                     },
                     {
@@ -882,7 +862,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 65
                     },
                     {
@@ -891,7 +871,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 66
                     },
                     {
@@ -900,7 +880,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(256, 0, 0)',
+                        value: 256,
                         seq_no: 67
                     },
                     {
@@ -909,7 +889,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(230, 0, 0)',
+                        value: 230,
                         seq_no: 68
                     },
                     {
@@ -918,7 +898,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(205, 0, 0)',
+                        value: 205,
                         seq_no: 69
                     },
                     {
@@ -927,7 +907,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(192, 0, 0)',
+                        value: 192,
                         seq_no: 70
                     },
                     {
@@ -936,7 +916,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(179, 0, 0)',
+                        value: 179,
                         seq_no: 71
                     },
                     {
@@ -945,7 +925,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(166, 0, 0)',
+                        value: 166,
                         seq_no: 72
                     },
                     {
@@ -954,7 +934,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(154, 0, 0)',
+                        value: 154,
                         seq_no: 73
                     },
                     {
@@ -963,7 +943,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
                         seq_no: 74
                     },
                     {
@@ -972,7 +952,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(115, 0, 0)',
+                        value: 115,
                         seq_no: 75
                     },
                     {
@@ -981,7 +961,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(102, 0, 0)',
+                        value: 102,
                         seq_no: 76
                     },
                     {
@@ -990,7 +970,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(90, 0, 0)',
+                        value: 90,
                         seq_no: 77
                     },
                     {
@@ -999,7 +979,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(77, 0, 0)',
+                        value: 77,
                         seq_no: 78
                     },
                     {
@@ -1008,7 +988,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(64, 0, 0)',
+                        value: 64,
                         seq_no: 79
                     },
                     {
@@ -1017,7 +997,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(51, 0, 0)',
+                        value: 51,
                         seq_no: 80
                     },
                     {
@@ -1026,7 +1006,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(38, 0, 0)',
+                        value: 38,
                         seq_no: 81
                     },
                     {
@@ -1035,7 +1015,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(26, 0, 0)',
+                        value: 26,
                         seq_no: 82
                     },
                     {
@@ -1044,7 +1024,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(13, 0, 0)',
+                        value: 13,
                         seq_no: 83
                     },
                     {
@@ -1053,7 +1033,16 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
+                        seq_no: 84
+                    },
+                    {
+                        duration: 26,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 0,
                         seq_no: 84
                     },
                     {
@@ -1062,7 +1051,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 85
                     },
                     {
@@ -1071,7 +1060,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
                         seq_no: 86
                     },
                     {
@@ -1080,7 +1069,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(192, 0, 0)',
+                        value: 192,
                         seq_no: 87
                     },
                     {
@@ -1089,7 +1078,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(256, 0, 0)',
+                        value: 256,
                         seq_no: 88
                     },
                     {
@@ -1098,7 +1087,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(38, 0, 0)',
+                        value: 38,
                         seq_no: 89
                     },
                     {
@@ -1107,7 +1096,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
                         seq_no: 90
                     },
                     {
@@ -1116,7 +1105,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(256, 0, 0)',
+                        value: 256,
                         seq_no: 91
                     },
                     {
@@ -1125,7 +1114,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(192, 0, 0)',
+                        value: 192,
                         seq_no: 92
                     },
                     {
@@ -1134,7 +1123,25 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
+                        seq_no: 93
+                    },
+                    {
+                        duration: 520,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
+                        seq_no: 93
+                    },
+                    {
+                        duration: 180,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 256,
                         seq_no: 93
                     },
                     {
@@ -1143,7 +1150,25 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(26, 0, 0)',
+                        value: 26,
+                        seq_no: 94
+                    },
+                    {
+                        duration: 360,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 128,
+                        seq_no: 94
+                    },
+                    {
+                        duration: 340,
+                        entry_name: "",
+                        entry_type: 0,
+                        extra_data: "",
+                        repeat_count: 1,
+                        value: 26,
                         seq_no: 94
                     },
                     {
@@ -1152,7 +1177,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(256, 0, 0)',
+                        value: 256,
                         seq_no: 95
                     },
                     {
@@ -1161,7 +1186,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(230, 0, 0)',
+                        value: 230,
                         seq_no: 96
                     },
                     {
@@ -1170,7 +1195,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(205, 0, 0)',
+                        value: 205,
                         seq_no: 97
                     },
                     {
@@ -1179,7 +1204,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(192, 0, 0)',
+                        value: 192,
                         seq_no: 98
                     },
                     {
@@ -1188,7 +1213,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(179, 0, 0)',
+                        value: 179,
                         seq_no: 99
                     },
                     {
@@ -1197,7 +1222,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(166, 0, 0)',
+                        value: 166,
                         seq_no: 100
                     },
                     {
@@ -1206,7 +1231,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(154, 0, 0)',
+                        value: 154,
                         seq_no: 101
                     },
                     {
@@ -1215,7 +1240,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(128, 0, 0)',
+                        value: 128,
                         seq_no: 102
                     },
                     {
@@ -1224,7 +1249,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(115, 0, 0)',
+                        value: 115,
                         seq_no: 103
                     },
                     {
@@ -1233,7 +1258,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(102, 0, 0)',
+                        value: 102,
                         seq_no: 104
                     },
                     {
@@ -1242,7 +1267,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(90, 0, 0)',
+                        value: 90,
                         seq_no: 105
                     },
                     {
@@ -1251,7 +1276,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(77, 0, 0)',
+                        value: 77,
                         seq_no: 106
                     },
                     {
@@ -1260,7 +1285,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(64, 0, 0)',
+                        value: 64,
                         seq_no: 107
                     },
                     {
@@ -1269,7 +1294,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(51, 0, 0)',
+                        value: 51,
                         seq_no: 108
                     },
                     {
@@ -1278,7 +1303,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(38, 0, 0)',
+                        value: 38,
                         seq_no: 109
                     },
                     {
@@ -1287,7 +1312,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(26, 0, 0)',
+                        value: 26,
                         seq_no: 110
                     },
                     {
@@ -1296,7 +1321,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(13, 0, 0)',
+                        value: 13,
                         seq_no: 111
                     },
                     {
@@ -1305,7 +1330,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 112
                     },
                     {
@@ -1314,7 +1339,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 113
                     },
                     {
@@ -1323,7 +1348,7 @@
                         entry_type: 0,
                         extra_data: "",
                         repeat_count: 1,
-                        value: 'rgb(0, 0, 0)',
+                        value: 0,
                         seq_no: 114
                     }
                 ]
@@ -1331,7 +1356,6 @@
         },
         components: {
             'virtual-list': virtualList,
-            // Box
         },
         created() {
             firebase.auth().onAuthStateChanged(user => {
@@ -1344,25 +1368,10 @@
             })
         },
         methods: {
-            drawBox(){
-                const ms = 10900;
-                const start = new Date().getTime();
-                let playback = 0;
-                this.bgCol = this.animSequence[playback].color;
-                while ((new Date().getTime() - start < ms) && (playback < (this.animSequence.length - 1))) {
-                    if ((new Date().getTime() - start) > this.animSequence[playback].delay) {
-                        // console.log('BG col', this.bgCol, this.animSequence[playback].delay);
-                        playback++;
-                        this.bgCol = this.animSequence[playback].color;
-                    }
-                }
-                console.log('DONE busy loop');
-            },
-            async boxStyle(){
+            async boxStyle() {
                 if (this.playSequence && this.playSequence.length > 0) {
                     console.log('START', new Date().getTime());
                     this.start(0);
-                    // this.start();
                 }
             },
             blackBox() {
@@ -1374,52 +1383,27 @@
             originalBox() {
                 this.box = 'background-color: rgb(243, 246, 249)';
             },
-            pauseTime(ms){
-                return new Promise((resolve) => {
-                    const start = new Date().getTime();
-                    while ((new Date().getTime() - start) < ms) {
-                        /*ms wait*/
-                        // console.log('busy waiting')
-                    }
-                    resolve();
-                });
-                // const start = new Date().getTime();
-                // while ((new Date().getTime() - start) < ms) {
-                //     /*ms wait*/
-                //     // console.log('busy waiting')
-                // }
-                // return;
-            },
             async start(counter) {
-                if((counter < this.playSequence.length) && this.continuePlaying) {
+                if ((counter < this.playSequence.length) && this.continuePlaying) {
                     if (this.playSequence[counter].time > 0) {
 
                         document.querySelector('.boxStyle').style.backgroundColor = this.playSequence[counter].color;
                         await this.wait((this.playSequence[counter].time));
-
-                        // if (this.playSequence[counter].color === '0xFFFFFF') {
-                        //     document.querySelector('.boxStyle').style.backgroundColor = '#fff';
-                        //     await this.wait((this.playSequence[counter].time - 1));
-                        // } else {
-                        //     document.querySelector('.boxStyle').style.backgroundColor = '#000';
-                        //     await this.wait((this.playSequence[counter].time - 1));
-                        // }
                     }
                     this.start(counter + 1);
 
                 } else {
                     document.querySelector('.boxStyle').style.backgroundColor = 'rgb(243, 246, 249)';
-                    console.log('END', new Date().getTime());
                 }
             },
             wait(ms) {
                 return new Promise((resolve) => {
                     setTimeout(() => {
                         resolve()
-                    },ms)
+                    }, ms)
                 })
             },
-            setActiveTab(tab){
+            setActiveTab(tab) {
                 this.activeTab = tab;
             },
             enableUpdateButton(index) {
@@ -1429,16 +1413,13 @@
                 e.stopPropagation();
                 firebase.auth().signOut();
                 this.$store.dispatch('cleanCurrentUserStateAction');
-                this.$router.push({ name: "Login" });
+                this.$router.push({name: "Login"});
             },
             daysAgo(createdAt) {
                 return moment(createdAt).fromNow();
             },
-            runSequence(){
-                this.$router.push({ name: 'RunSequence'});
-            },
-            navigateToMaster(){
-                this.$router.push({ name: 'Profile'});
+            navigateToMaster() {
+                this.$router.push({name: 'Profile'});
             },
             seqNoChange(seqNo) {
                 console.log("changing seq no to ", seqNo);
@@ -1459,28 +1440,26 @@
                 };
                 this.$store.dispatch('setActiveMasterDataAction', payload);
             },
-            editMasterData(index){
+            editMasterData(index) {
                 this.editSlot = index;
                 this.enableEdit = index
             },
             replacePlaceholder(value) {
                 return value ? value : 'Start typing something ...'
             },
-            replacePlaceholderUrl(value){
+            replacePlaceholderUrl(value) {
                 return value ? value : 'http://...'
             },
-            replaceDescPlaceholderReadView(value){
+            replaceDescPlaceholderReadView(value) {
                 return value ? value : 'description section is empty';
             },
             replaceLinkPlaceholderReadView(value) {
                 return value ? value : 'no external url added';
             },
-            navigateTo(link){
+            navigateTo(link) {
                 window.location.href = link;
             },
             onDetailSave(index, detail) {
-                // console.log('saving data details ');
-
                 this.getActiveMasterData.masterData.detail_data[index] = detail;
 
                 this.getActiveMasterData.masterData.detail_data.sort(function (a, b) {
@@ -1503,8 +1482,6 @@
                 this.$store.dispatch('setActiveMasterDataAction', payload);
             },
             async addDetailData() {
-                // console.log('adding new detail data');
-
                 this.getActiveMasterData.masterData.detail_data.sort(function (a, b) {
                     return a.seq_no - b.seq_no;
                 });
@@ -1518,7 +1495,7 @@
                     entry_name: "",
                     entry_type: 0,
                     extra_data: "",
-                    repeat_count: 0,
+                    repeat_count: 1,
                     value: 0,
                     seq_no: newHighestSeqNo
                 });
@@ -1540,7 +1517,7 @@
                 const index = this.getActiveMasterData.masterData.detail_data.length > 0 ? (this.getActiveMasterData.masterData.detail_data.length - 1) : 0;
                 document.getElementById("entry_name_seq_" + index).focus();
             },
-            async addTestData(){
+            async addTestData() {
                 // console.log('start setting up test data');
                 this.getActiveMasterData.masterData.detail_data = [];
 
@@ -1561,23 +1538,23 @@
                 //         tempData.push(payload);
                 //     }
 
-                    // this.getActiveMasterData.masterData.detail_data = tempData;
-                    this.getActiveMasterData.masterData.detail_data = this.animSequence;
+                // this.getActiveMasterData.masterData.detail_data = tempData;
+                this.getActiveMasterData.masterData.detail_data = this.animSequence;
 
-                    fb.usersCollection.doc(this.getActiveMasterData.userInfo.uid).collection('master').doc(this.getActiveMasterData.masterId)
-                        .set(this.getActiveMasterData.masterData, {merge: true}).catch(err => {
-                        console.log(err)
-                    });
+                fb.usersCollection.doc(this.getActiveMasterData.userInfo.uid).collection('master').doc(this.getActiveMasterData.masterId)
+                    .set(this.getActiveMasterData.masterData, {merge: true}).catch(err => {
+                    console.log(err)
+                });
 
-                    const payload = {
-                        id: uuid(),
-                        masterId: this.getActiveMasterData.masterId,
-                        masterData: this.getActiveMasterData.masterData,
-                        userInfo: this.getActiveMasterData.userInfo
-                    };
-                    this.$store.dispatch('setActiveMasterDataAction', payload);
-                    await this.wait(1500);
-                    this.loadingData = false;
+                const payload = {
+                    id: uuid(),
+                    masterId: this.getActiveMasterData.masterId,
+                    masterData: this.getActiveMasterData.masterData,
+                    userInfo: this.getActiveMasterData.userInfo
+                };
+                this.$store.dispatch('setActiveMasterDataAction', payload);
+                await this.wait(1500);
+                this.loadingData = false;
                 // }
 
             },
@@ -1585,19 +1562,34 @@
                 this.processing = true;
                 this.playNow = false;
                 const playbackSequence = [];
+                let timeout;
 
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0) {
-                    this.getActiveMasterData.masterData.detail_data.forEach(detail => {
+                    this.getActiveMasterData.masterData.detail_data.forEach((detail, i) => {
                         const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
-                        // const color = i%2 === 0 ? '0x000000': '0xFFFFFF';
-                        const color = detail.value;
+
+                        if (i === 0)  {
+                            timeout = durationInMillis;
+                        } else {
+                            timeout += durationInMillis;
+                        }
+
+                        const color_level = parseInt(detail.value);
+                        const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
                         const payload = {
-                            time: durationInMillis,
+                            timeout: timeout,
                             color: color
                         };
                         playbackSequence.push(payload);
                     })
                 }
+
+                const endTime = (timeout + 10);
+                const endPayload = {
+                    timeout: endTime,
+                    color: 'rgb(243, 246, 249)'
+                };
+                playbackSequence.push(endPayload);
 
                 this.playSequence = playbackSequence;
                 await this.wait(20);
@@ -1605,57 +1597,76 @@
                 this.playNow = true;
             },
             playAll() {
-                // console.log('play button pressed');
                 if (!this.processing && this.playSequence.length > 0) {
                     this.playNow = true;
                     this.continuePlaying = true;
-                    this.boxStyle();
-                    // this.delay();
-                    // this.drawBox();
+                    this.myMove()
                 }
             },
             playSelected() {
-                // console.log('play selected button pressed');
                 if (this.activeTab !== null) {
+                    this.playSequence = [];
                     const activeRow = this.getActiveMasterData.masterData.detail_data[this.activeTab];
                     const durationInMillis = parseInt(activeRow.duration) * parseInt(activeRow.repeat_count);
-                    const color = this.activeTab % 2 === 0 ? '0x000000': '0xFFFFFF';
+                    const color_level = parseInt(activeRow.value);
+                    const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
                     const payload = {
-                        time: durationInMillis,
+                        timeout: durationInMillis,
                         color: color
                     };
-                    this.playSequence = [];
+
+                    const endTime = (durationInMillis + 10);
+                    const endPayload = {
+                        timeout: endTime,
+                        color: 'rgb(243, 246, 249)'
+                    };
+
                     this.playSequence.push(payload);
+                    this.playSequence.push(endPayload);
                     this.continuePlaying = true;
-                    this.boxStyle();
+                    this.myMove();
                 }
             },
-            playFrom() {
-                // console.log('play from button pressed');
-
+            async playFrom() {
                 this.processing = true;
                 this.playNow = false;
+                this.playSequence = [];
                 const playbackSequence = [];
+                let timeout;
 
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0 && this.activeTab !== null) {
 
-                    for(let i = this.activeTab; i < this.getActiveMasterData.masterData.detail_data.length; i++) {
+                    for (let i = this.activeTab; i < this.getActiveMasterData.masterData.detail_data.length; i++) {
                         const detail = this.getActiveMasterData.masterData.detail_data[i];
                         const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
-                        const color = i%2 === 0 ? '0x000000': '0xFFFFFF';
+
+                        if (i === this.activeTab)  {
+                            timeout = durationInMillis;
+                        } else {
+                            timeout += durationInMillis;
+                        }
+
+                        const color_level = parseInt(detail.value);
+                        const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
                         const payload = {
-                            time: durationInMillis,
+                            timeout: timeout,
                             color: color
                         };
                         playbackSequence.push(payload);
                     }
 
+                    const endTime = (timeout + 10);
+                    const endPayload = {
+                        timeout: endTime,
+                        color: 'rgb(243, 246, 249)'
+                    };
+                    playbackSequence.push(endPayload);
+
+                    await this.wait(20);
                     this.playSequence = playbackSequence;
-                    this.enterClass = 'newBox';
                     this.processing = false;
                     this.continuePlaying = true;
-
-                    this.boxStyle();
+                    this.myMove();
                 }
             },
             removeSelected() {
@@ -1682,14 +1693,66 @@
             },
             getRefId(index) {
                 return 'seq_' + index;
+            },
+            myMove() {
+                const sequenceList = this.playSequence;
+                let playBackIndex = 0;
+                const numEntries = sequenceList.length;
+                let startTime = new Date();
+                let endMillis = 0;
+                let color;
+                let currentColor;
+
+                if (numEntries > 0) {
+                    endMillis = sequenceList[playBackIndex].timeout;
+                    color = sequenceList[playBackIndex].color;
+                }
+
+                let id = setInterval(() => {
+                    if (this.continuePlaying) {
+                        frame();
+                    }
+                }, 1);
+
+                function frame() {
+                    let elem = document.getElementById("container");
+                    let currentTime = new Date();
+                    if ((playBackIndex < numEntries)) {
+                        while (((currentTime - startTime) > endMillis) &&
+                        (playBackIndex < numEntries)) {
+                            endMillis = sequenceList[playBackIndex].timeout;
+                            color = sequenceList[playBackIndex].color;
+                            playBackIndex++;
+                        }
+                        if (color !== currentColor) {
+                            elem.style.background = color;
+                            currentColor = color;
+                        }
+                    } else {
+                        clearInterval(id);
+                    }
+                }
             }
         }
     }
 </script>
 
 
-<style lang="scss" scoped>
-
+<style scoped>
+    #virtual-list-style::-webkit-scrollbar {
+        background-color: rgb(243, 246, 249);
+        border-radius: 10px;
+        width: 15px;
+    }
+    #virtual-list-style::-webkit-scrollbar-thumb {
+        background-color: #4f566b;
+        border-radius: 10px;
+    }
+    #container {
+        width: 75vh;
+        height: 68vh;
+        background: rgb(243, 246, 249);
+    }
     .scroller {
         height: 100%;
     }
@@ -1697,10 +1760,6 @@
         /*margin-top: 10px; padding: 10px; width: 80vh; height: 68vh; background-color: #343a40;*/
         /*margin-top: 10px; padding: 10px; width: 200px; height: 200px;*/
         margin-top: 10px; padding: 10px; width: 80vh; height: 68vh;
-    }
-    .boxStyleNew {
-        animation: toWhite 1000ms ease-in;
-        margin-top: 10px; padding: 10px; width: 200px; height: 200px; background-color: #343a40;
     }
     .left-sidebar {
         position: fixed; top:60px; left: 0; width: 10%; height: 100%; background-color: rgb(29, 67, 84); border-right: 1px solid rgba(0,0,0,.07)
