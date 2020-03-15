@@ -98,7 +98,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row" style="padding: 10px">
-                    <div v-if=!getActiveMasterData.masterData>
+                    <div v-if="!getActiveMasterData.masterData">
                         <p>Loading ... </p>
                     </div>
                     <div v-else  class="container-fluid" style="padding-right: 0;">
@@ -117,11 +117,11 @@
                                         </div>
                                         <div id="col-end" class="col-xs-6 col-md-4 align-self-center"></div>
                                     </div>
-                                    <div class="row pointer" style="padding-left: 10px;" @click.stop.prevent="addDetailData()">
+                                    <div class="row pointer" style="padding-left: 10px;">
                                         <div class="col-md-10">
                                             <p style=" font-size: 18px; margin-bottom: 2px;">Sequence List</p>
                                         </div>
-                                        <div class="col-md-2 d-flex" style="justify-content: flex-end; padding-right: 35px; margin-top: 10px">
+                                        <div class="col-md-2 d-flex" style="justify-content: flex-end; padding-right: 35px; margin-top: 10px" @click.stop.prevent="addDetailData()">
                                             <p style="font-size: 14px; margin-bottom: 2px;"><font-awesome-icon icon="plus-circle"/> <span>Add</span></p>
                                         </div>
                                     </div>
@@ -169,7 +169,7 @@
                                                 </div>
                                                 <div id="col-detail-start" class="col-md-6 align-self-center">
                                                     <div class="detail-duration">
-                                                        <input :id="'entry_name_' + getRefId(index)" class="form-control" type="text" maxlength="25"
+                                                        <input :id="'entry_name_' + index" class="form-control" type="text" maxlength="25"
                                                                v-model="argument.entry_name"
                                                                @change.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.entry_name>
@@ -1352,7 +1352,8 @@
                         value: 0,
                         seq_no: 114
                     }
-                ]
+                ],
+                loading: false
             }
         },
         components: {
@@ -1483,12 +1484,13 @@
                 this.$store.dispatch('setActiveMasterDataAction', payload);
             },
             async addDetailData() {
+                // this.loading = true;
                 this.getActiveMasterData.masterData.detail_data.sort(function (a, b) {
                     return a.seq_no - b.seq_no;
                 });
                 const len = this.getActiveMasterData.masterData.detail_data.length;
                 const lastIndex = len > 0 ? (len - 1) : 0;
-                const highestExtSeqNo = lastIndex > 0 ? parseInt(this.getActiveMasterData.masterData.detail_data[lastIndex].seq_no) : 0;
+                const highestExtSeqNo = len > 0 ? parseInt(this.getActiveMasterData.masterData.detail_data[lastIndex].seq_no) : 0;
                 const newHighestSeqNo = highestExtSeqNo + 1;
 
                 this.getActiveMasterData.masterData.detail_data.push({
@@ -1514,9 +1516,10 @@
                 };
                 this.$store.dispatch('setActiveMasterDataAction', payload);
 
-                await this.wait(1000);
-                const index = this.getActiveMasterData.masterData.detail_data.length > 0 ? (this.getActiveMasterData.masterData.detail_data.length - 1) : 0;
-                document.getElementById("entry_name_seq_" + index).focus();
+                // await this.wait(1000);
+                // const index = this.getActiveMasterData.masterData.detail_data.length > 0 ? (this.getActiveMasterData.masterData.detail_data.length - 1) : 0;
+                // this.loading = false;
+                // document.getElementById("entry_name_" + index).focus();
             },
             async addTestData() {
                  this.getActiveMasterData.masterData.detail_data = [];

@@ -122,7 +122,7 @@ Once the above steps are done, use the following command to deploy functions to 
 - firebase deploy --only functions --project dev
 ```
 
-##Summary
+### Summary
 Once for every fresh clone, execute the following steps which is described above in detail,
 ```
 1. Setup enviroment configs
