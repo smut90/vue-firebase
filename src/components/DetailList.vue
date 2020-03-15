@@ -150,7 +150,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-group" id="list-tab" role="tablist" style="margin-top: 110px;">
+                                <div v-if="loading"  style="margin-top: 115px;">
+                                    <p>Loading...</p>
+                                </div>
+                                <div v-else class="list-group" id="list-tab" role="tablist" style="margin-top: 110px;">
                                     <virtual-list id="virtual-list-style" :size="40" :remain="8" style="height: 75vh; padding-right: 15px;">
                                         <div :key="index" :ref="getRefId(index)" :id="getRefId(index)"
                                              v-bind:class="[ activeTab === index ? 'active' : 'non-active']"
@@ -1484,7 +1487,7 @@
                 this.$store.dispatch('setActiveMasterDataAction', payload);
             },
             async addDetailData() {
-                // this.loading = true;
+                this.loading = true;
                 this.getActiveMasterData.masterData.detail_data.sort(function (a, b) {
                     return a.seq_no - b.seq_no;
                 });
@@ -1516,10 +1519,11 @@
                 };
                 this.$store.dispatch('setActiveMasterDataAction', payload);
 
-                // await this.wait(1000);
+                await this.wait(500);
                 // const index = this.getActiveMasterData.masterData.detail_data.length > 0 ? (this.getActiveMasterData.masterData.detail_data.length - 1) : 0;
-                // this.loading = false;
-                // document.getElementById("entry_name_" + index).focus();
+                this.loading = false;
+                // const ele = await document.getElementById("entry_name_" + index);
+                // ele.focus();
             },
             async addTestData() {
                  this.getActiveMasterData.masterData.detail_data = [];
