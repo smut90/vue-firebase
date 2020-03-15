@@ -98,7 +98,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row" style="padding: 10px">
-                    <div v-if=!getActiveMasterData.masterData>
+                    <div v-if="!getActiveMasterData.masterData">
                         <p>Loading ... </p>
                     </div>
                     <div v-else  class="container-fluid" style="padding-right: 0;">
@@ -117,11 +117,11 @@
                                         </div>
                                         <div id="col-end" class="col-xs-6 col-md-4 align-self-center"></div>
                                     </div>
-                                    <div class="row pointer" style="padding-left: 10px;" @click.stop.prevent="addDetailData()">
+                                    <div class="row pointer" style="padding-left: 10px;">
                                         <div class="col-md-10">
                                             <p style=" font-size: 18px; margin-bottom: 2px;">Sequence List</p>
                                         </div>
-                                        <div class="col-md-2 d-flex" style="justify-content: flex-end; padding-right: 35px; margin-top: 10px">
+                                        <div class="col-md-2 d-flex" style="justify-content: flex-end; padding-right: 35px; margin-top: 10px" @click.stop.prevent="addDetailData()">
                                             <p style="font-size: 14px; margin-bottom: 2px;"><font-awesome-icon icon="plus-circle"/> <span>Add</span></p>
                                         </div>
                                     </div>
@@ -169,7 +169,7 @@
                                                 </div>
                                                 <div id="col-detail-start" class="col-md-6 align-self-center">
                                                     <div class="detail-duration">
-                                                        <input :id="'entry_name_' + getRefId(index)" class="form-control" type="text" maxlength="25"
+                                                        <input :id="'entry_name_' + index" class="form-control" type="text" maxlength="25"
                                                                v-model="argument.entry_name"
                                                                @change.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.entry_name>
@@ -256,6 +256,7 @@
     import firebase from "firebase";
     import virtualList from 'vue-virtual-scroll-list';
     const fb = require('../firebaseConfig.js');
+    const { processSequence } = require('../service/api');
 
     export default {
         name: "MasterDataList",
@@ -1351,7 +1352,8 @@
                         value: 0,
                         seq_no: 114
                     }
-                ]
+                ],
+                loading: false
             }
         },
         components: {
@@ -1482,12 +1484,13 @@
                 this.$store.dispatch('setActiveMasterDataAction', payload);
             },
             async addDetailData() {
+                // this.loading = true;
                 this.getActiveMasterData.masterData.detail_data.sort(function (a, b) {
                     return a.seq_no - b.seq_no;
                 });
                 const len = this.getActiveMasterData.masterData.detail_data.length;
                 const lastIndex = len > 0 ? (len - 1) : 0;
-                const highestExtSeqNo = lastIndex > 0 ? parseInt(this.getActiveMasterData.masterData.detail_data[lastIndex].seq_no) : 0;
+                const highestExtSeqNo = len > 0 ? parseInt(this.getActiveMasterData.masterData.detail_data[lastIndex].seq_no) : 0;
                 const newHighestSeqNo = highestExtSeqNo + 1;
 
                 this.getActiveMasterData.masterData.detail_data.push({
@@ -1513,13 +1516,13 @@
                 };
                 this.$store.dispatch('setActiveMasterDataAction', payload);
 
-                await this.wait(1000);
-                const index = this.getActiveMasterData.masterData.detail_data.length > 0 ? (this.getActiveMasterData.masterData.detail_data.length - 1) : 0;
-                document.getElementById("entry_name_seq_" + index).focus();
+                // await this.wait(1000);
+                // const index = this.getActiveMasterData.masterData.detail_data.length > 0 ? (this.getActiveMasterData.masterData.detail_data.length - 1) : 0;
+                // this.loading = false;
+                // document.getElementById("entry_name_" + index).focus();
             },
             async addTestData() {
-                // console.log('start setting up test data');
-                this.getActiveMasterData.masterData.detail_data = [];
+                 this.getActiveMasterData.masterData.detail_data = [];
 
                 this.loadingData = true;
                 // const tempData = [];
@@ -1561,37 +1564,14 @@
             async startProcessing() {
                 this.processing = true;
                 this.playNow = false;
-                const playbackSequence = [];
-                let timeout;
 
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0) {
-                    this.getActiveMasterData.masterData.detail_data.forEach((detail, i) => {
-                        const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
-
-                        if (i === 0)  {
-                            timeout = durationInMillis;
-                        } else {
-                            timeout += durationInMillis;
-                        }
-
-                        const color_level = parseInt(detail.value);
-                        const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
-                        const payload = {
-                            timeout: timeout,
-                            color: color
-                        };
-                        playbackSequence.push(payload);
-                    })
+                    const res = await processSequence(this.getActiveMasterData.masterData.detail_data);
+                    this.playSequence = res.list;
+                } else {
+                    this.playSequence = [];
                 }
 
-                const endTime = (timeout + 10);
-                const endPayload = {
-                    timeout: endTime,
-                    color: 'rgb(243, 246, 249)'
-                };
-                playbackSequence.push(endPayload);
-
-                this.playSequence = playbackSequence;
                 await this.wait(20);
                 this.processing = false;
                 this.playNow = true;
@@ -1603,26 +1583,19 @@
                     this.myMove()
                 }
             },
-            playSelected() {
+            async playSelected() {
                 if (this.activeTab !== null) {
+                    this.processing = true;
                     this.playSequence = [];
                     const activeRow = this.getActiveMasterData.masterData.detail_data[this.activeTab];
-                    const durationInMillis = parseInt(activeRow.duration) * parseInt(activeRow.repeat_count);
-                    const color_level = parseInt(activeRow.value);
-                    const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
-                    const payload = {
-                        timeout: durationInMillis,
-                        color: color
-                    };
 
-                    const endTime = (durationInMillis + 10);
-                    const endPayload = {
-                        timeout: endTime,
-                        color: 'rgb(243, 246, 249)'
-                    };
-
-                    this.playSequence.push(payload);
-                    this.playSequence.push(endPayload);
+                    const res = await processSequence([activeRow]);
+                    if (res) {
+                        this.playSequence = res.list;
+                    } else {
+                        this.playSequence = [];
+                    }
+                    this.processing = false;
                     this.continuePlaying = true;
                     this.myMove();
                 }
@@ -1631,46 +1604,23 @@
                 this.processing = true;
                 this.playNow = false;
                 this.playSequence = [];
-                const playbackSequence = [];
-                let timeout;
 
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0 && this.activeTab !== null) {
 
-                    for (let i = this.activeTab; i < this.getActiveMasterData.masterData.detail_data.length; i++) {
-                        const detail = this.getActiveMasterData.masterData.detail_data[i];
-                        const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
-
-                        if (i === this.activeTab)  {
-                            timeout = durationInMillis;
-                        } else {
-                            timeout += durationInMillis;
-                        }
-
-                        const color_level = parseInt(detail.value);
-                        const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
-                        const payload = {
-                            timeout: timeout,
-                            color: color
-                        };
-                        playbackSequence.push(payload);
+                    const seqList = this.getActiveMasterData.masterData.detail_data.slice(this.activeTab);
+                    const res = await processSequence(seqList);
+                    if (res) {
+                        this.playSequence = res.list;
+                    } else {
+                        this.playSequence = [];
                     }
 
-                    const endTime = (timeout + 10);
-                    const endPayload = {
-                        timeout: endTime,
-                        color: 'rgb(243, 246, 249)'
-                    };
-                    playbackSequence.push(endPayload);
-
-                    await this.wait(20);
-                    this.playSequence = playbackSequence;
                     this.processing = false;
                     this.continuePlaying = true;
                     this.myMove();
                 }
             },
             removeSelected() {
-                // console.log('remove selected button pressed');
                 if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0) {
                     this.getActiveMasterData.masterData.detail_data.splice(this.activeTab, 1);
 
