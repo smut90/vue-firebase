@@ -52,9 +52,18 @@
                             </div>
                             <div v-else style="padding-top: 10px">
                                 <p style="margin-bottom: 10px">{{replaceDescPlaceholderReadView(argument.data.description)}}</p>
-                                <li data-toggle="tooltip" data-placement="top" :title=replaceLinkPlaceholderReadView(argument.data.external_file_url) @click.stop.prevent="navigateTo(argument.data.external_file_url)" class="btn btn-dark btn-sm">
-                                    <font-awesome-icon icon="link" size="sm" /> Link
-                                </li>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <li data-toggle="tooltip" data-placement="top" :title=replaceLinkPlaceholderReadView(argument.data.external_file_url) @click.stop.prevent="navigateTo(argument.data.external_file_url)" class="btn btn-dark btn-sm">
+                                            <font-awesome-icon icon="link" size="sm" /> Link
+                                        </li>
+                                    </div>
+                                    <div class="col-md-6 d-flex" style="justify-content: flex-end">
+                                        <button type="submit" class="btn btn-danger btn-sm" @click.stop.prevent="removeSelected(argument.id)" style="margin-right: 5px;">
+                                            <font-awesome-icon icon="trash-alt"/>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -92,6 +101,26 @@
             masterData: Object
         },
         methods: {
+            removeSelected(id) {
+                console.log('remove button clicked', id, this.masterData[id]);
+                if (this.masterData[id]) {
+                    delete this.masterData[id];
+
+                    const fbUserPayload = {
+                        id: uuid(),
+                        userInfo: this.userInfo,
+                        masterData: this.masterData
+                    };
+
+                    fb.usersCollection.doc(this.userInfo.uid).collection('master').doc(id)
+                        .delete()
+                        .catch(err => {
+                            console.log(err)
+                        });
+
+                    this.$store.dispatch('setCurrentUserCollectionAction', fbUserPayload);
+                }
+            },
             navigateTo(link){
                 window.location.href = link;
             },

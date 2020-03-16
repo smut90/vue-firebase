@@ -46,8 +46,15 @@ processSeqList = (sequenceList) => {
                 timeout += durationInMillis;
             }
 
-            const color_level = parseInt(detail.value);
-            const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
+            // const color_level = parseInt(detail.value);
+            // const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
+            let color;
+            if (i % 2 === 0) {
+                color = 'rgb(0, 0, 0)'
+            } else {
+                color = 'rgb(255, 255, 255)';
+            }
+
             const payload = {
                 timeout: timeout,
                 color: color
