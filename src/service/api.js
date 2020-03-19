@@ -24,6 +24,7 @@ const processSequence = async (seqList) => {
             return res.data;
         }).catch(error => {
             console.error('an error occurred while fetching processed seq list', error);
+            throw new Error()
         });
 };
 

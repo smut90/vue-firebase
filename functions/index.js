@@ -40,12 +40,6 @@ processSeqList = (sequenceList) => {
         const errors = validateRequestPayload(detail);
         if (errors.length === 0) {
             const durationInMillis = parseInt(detail.duration) * parseInt(detail.repeat_count);
-            if (i === 0)  {
-                timeout = durationInMillis;
-            } else {
-                timeout += durationInMillis;
-            }
-
             // const color_level = parseInt(detail.value);
             // const color = 'rgb(0, 0, ' + (255 / 100) * color_level + ')';
             let color;
@@ -55,11 +49,34 @@ processSeqList = (sequenceList) => {
                 color = 'rgb(255, 255, 255)';
             }
 
-            const payload = {
-                timeout: timeout,
-                color: color
-            };
-            playbackSequence.push(payload);
+
+            if(parseInt(detail.entry_type) === 2) {
+                if( i === 0) {
+                    timeout = durationInMillis / 2;
+                } else {
+                    timeout += durationInMillis / 2;
+                }
+                const payload1 = { timeout: timeout , color: 'rgb(0, 0, 0)'}
+                playbackSequence.push(payload1);
+                timeout += durationInMillis / 2;
+                const payload2 = { timeout: timeout, color: 'rgb(255, 255, 255)'}
+                playbackSequence.push(payload2);
+            } else if(parseInt(detail.entry_type) === 1){
+                // Ignore the type 1
+                console.log('throw error when entry type is 1');
+                throw new Error();
+            } else {
+                if (i === 0)  {
+                    timeout = durationInMillis;
+                } else {
+                    timeout += durationInMillis;
+                }
+                const payload = {
+                    timeout: timeout,
+                    color: color
+                };
+                playbackSequence.push(payload);
+            }
 
         } else {
             console.error('sequence info errors: ', errors);
@@ -78,6 +95,7 @@ processSeqList = (sequenceList) => {
 
 validateRequestPayload = (payload) => {
     const errors = [];
+    console.log('Payload: ', payload);
     if (!payload.hasOwnProperty('duration')) {
         const errorMsg = 'request body should contain duration field';
         console.error(errorMsg);

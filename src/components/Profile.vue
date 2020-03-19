@@ -52,7 +52,7 @@
                 return userDocRef.get().then(user => {
                     console.log('fetch user firebase root info: ', user.data());
 
-                    if (user.data()){
+                    if (user.data()) {
                         let masterSubCollectionRef = userDocRef.collection('master').orderBy("seq_no", "desc").get();
                         masterSubCollectionRef.then(snapshot => {
                             let masterDataCollectionForUser = {};

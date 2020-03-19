@@ -33,10 +33,10 @@
                         <button type="submit" class="btn btn-dark btn-sm" :disabled="!playNow" @click.stop.prevent="playAll()" style="margin-right: 5px">
                             <p style="margin-bottom: 0"><font-awesome-icon icon="reply-all" /><span style="padding-left: 5px;">all</span></p>
                         </button>
-                        <button type="submit" class="btn btn-dark btn-sm" :disabled="activeTab === null" @click.stop.prevent="playFrom()" style="margin-right: 5px">
+                        <button type="submit" class="btn btn-dark btn-sm" :disabled="activeTab === null || errors[activeTab]" @click.stop.prevent="playFrom()" style="margin-right: 5px">
                             <p style="margin-bottom: 0"><font-awesome-icon icon="reply" /><span style="padding-left: 5px">from</span></p>
                         </button>
-                        <button type="submit" class="btn btn-dark btn-sm" :disabled="activeTab === null" @click.stop.prevent="playSelected()">
+                        <button type="submit" class="btn btn-dark btn-sm" :disabled="activeTab === null || errors[activeTab]" @click.stop.prevent="playSelected()">
                             <p style="margin-bottom: 0"><font-awesome-icon icon="play-circle" /><span style="padding-left: 5px">selected</span></p>
                         </button>
                     </div>
@@ -163,7 +163,7 @@
                                             <div class="row" style="margin-bottom: 15px; margin-top: 15px">
                                                 <div id="col-sq-start" class="col-md-1 align-self-center">
                                                     <div class="detail-duration">
-                                                        <input class="form-control" id="seq_no" type="text" maxlength="10"
+                                                        <input class="form-control" id="seq_no" type="number" maxlength="10" min="0"
                                                                v-model="argument.seq_no"
                                                                style="padding-left: 5px"
                                                                @change.prevent="enableUpdateButton(index)"
@@ -180,7 +180,7 @@
                                                 </div>
                                                 <div id="col-detail-mid" class="col-md-3 align-self-center">
                                                     <div class="detail-duration">
-                                                        <input class="form-control" id="duration" type="text" maxlength="10"
+                                                        <input class="form-control" id="duration" type="number" maxlength="10" min="1"
                                                                v-model="argument.duration"
                                                                @change.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.duration>
@@ -188,7 +188,7 @@
                                                 </div>
                                                 <div id="col-detail-end" class="col-md-2 align-self-center">
                                                     <div class="detail-repeat-count">
-                                                        <input class="form-control" id="repeat_count" type="text" maxlength="10"
+                                                        <input class="form-control" id="repeat_count" type="number" maxlength="10" min="1"
                                                                v-model="argument.repeat_count"
                                                                @change.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.repeat_count>
@@ -1356,7 +1356,8 @@
                         seq_no: 114
                     }
                 ],
-                loading: false
+                loading: false,
+                errors: {}
             }
         },
         components: {
@@ -1465,26 +1466,39 @@
                 window.location.href = link;
             },
             onDetailSave(index, detail) {
-                this.getActiveMasterData.masterData.detail_data[index] = detail;
 
-                this.getActiveMasterData.masterData.detail_data.sort(function (a, b) {
-                    return a.seq_no - b.seq_no;
-                });
+                console.log('HERE 1', detail);
 
-                fb.usersCollection.doc(this.getActiveMasterData.userInfo.uid).collection('master').doc(this.getActiveMasterData.masterId)
-                    .set(this.getActiveMasterData.masterData, {merge: true}).catch(err => {
-                    console.log(err)
-                });
+                if (detail && detail.seq_no !== '' && detail.duration !== '' && detail.repeat_count !== '' && detail.entry_type !=='' && detail.value !== '') {
+                    console.log('HERE 2');
+                    this.getActiveMasterData.masterData.detail_data[index] = detail;
 
-                this.enableUpdate[index] = false;
+                    this.getActiveMasterData.masterData.detail_data.sort(function (a, b) {
+                        return a.seq_no - b.seq_no;
+                    });
 
-                const payload = {
-                    id: uuid(),
-                    masterId: this.getActiveMasterData.masterId,
-                    masterData: this.getActiveMasterData.masterData,
-                    userInfo: this.getActiveMasterData.userInfo
-                };
-                this.$store.dispatch('setActiveMasterDataAction', payload);
+                    fb.usersCollection.doc(this.getActiveMasterData.userInfo.uid).collection('master').doc(this.getActiveMasterData.masterId)
+                        .set(this.getActiveMasterData.masterData, {merge: true}).catch(err => {
+                        console.log(err)
+                    });
+
+                    this.enableUpdate[index] = false;
+
+                    const payload = {
+                        id: uuid(),
+                        masterId: this.getActiveMasterData.masterId,
+                        masterData: this.getActiveMasterData.masterData,
+                        userInfo: this.getActiveMasterData.userInfo
+                    };
+                    this.$store.dispatch('setActiveMasterDataAction', payload);
+                    if (this.errors[index]) {
+                        delete this.errors[index];
+                    }
+
+                } else {
+                    console.log('fields should not have empty values');
+                    this.errors[index] = true
+                }
             },
             async addDetailData() {
                 this.loading = true;
@@ -1569,16 +1583,34 @@
                 this.processing = true;
                 this.playNow = false;
 
-                if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0) {
-                    const res = await processSequence(this.getActiveMasterData.masterData.detail_data);
-                    this.playSequence = res.list;
-                } else {
-                    this.playSequence = [];
-                }
+                if (this.errors && Object.keys(this.errors).length === 0) {
+                    if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0) {
 
-                await this.wait(20);
-                this.processing = false;
-                this.playNow = true;
+                        let res;
+                        try {
+                            res = await processSequence(this.getActiveMasterData.masterData.detail_data);
+                            this.playSequence = res.list;
+                            await this.wait(20);
+                            this.processing = false;
+                            this.playNow = true;
+
+                        } catch(e) {
+                            window.alert('Oops!! something went wrong..');
+                            this.playSequence = [];
+                            this.processing = false;
+                            this.playNow = false;
+                        }
+
+                    } else {
+                        this.playSequence = [];
+                        this.processing = false;
+                        this.playNow = false;
+                    }
+                } else {
+                    console.log('get rid of all the errors');
+                    this.processing = false;
+                    this.playNow = false;
+                }
             },
             playAll() {
                 if (!this.processing && this.playSequence.length > 0) {
@@ -1588,40 +1620,74 @@
                 }
             },
             async playSelected() {
-                if (this.activeTab !== null) {
-                    this.processing = true;
-                    this.playSequence = [];
-                    const activeRow = this.getActiveMasterData.masterData.detail_data[this.activeTab];
-
-                    const res = await processSequence([activeRow]);
-                    if (res) {
-                        this.playSequence = res.list;
-                    } else {
+                if (!this.errors[this.activeTab]) {
+                    if (this.activeTab !== null) {
+                        this.processing = true;
                         this.playSequence = [];
+                        const activeRow = this.getActiveMasterData.masterData.detail_data[this.activeTab];
+
+                        try {
+                            const res = await processSequence([activeRow]);
+                            if (res) {
+                                this.playSequence = res.list;
+                            } else {
+                                this.playSequence = [];
+                            }
+
+                            this.processing = false;
+                            this.continuePlaying = true;
+                            this.myMove();
+
+                        } catch (e) {
+                            window.alert('Oops!! something went wrong..');
+                            this.processing = false;
+                            this.continuePlaying = false;
+                            this.playSequence = [];
+                        }
                     }
+
+                } else {
+                    console.log('get rid of all the errors');
                     this.processing = false;
-                    this.continuePlaying = true;
-                    this.myMove();
+                    this.continuePlaying = false;
                 }
+
             },
             async playFrom() {
                 this.processing = true;
                 this.playNow = false;
                 this.playSequence = [];
 
-                if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0 && this.activeTab !== null) {
+                if(Object.keys(this.errors).length === 0) {
+                    if (this.getActiveMasterData.masterData.detail_data && this.getActiveMasterData.masterData.detail_data.length > 0 && this.activeTab !== null) {
 
-                    const seqList = this.getActiveMasterData.masterData.detail_data.slice(this.activeTab);
-                    const res = await processSequence(seqList);
-                    if (res) {
-                        this.playSequence = res.list;
-                    } else {
-                        this.playSequence = [];
+                        try {
+                            const seqList = this.getActiveMasterData.masterData.detail_data.slice(this.activeTab);
+                            const res = await processSequence(seqList);
+                            if (res) {
+                                this.playSequence = res.list;
+                            } else {
+                                this.playSequence = [];
+                            }
+
+                            this.processing = false;
+                            this.continuePlaying = true;
+                            this.myMove();
+
+                        } catch (e) {
+                            window.alert('Oops!! something went wrong..');
+                            this.playSequence = [];
+                            this.processing = false;
+                            this.continuePlaying = false;
+                        }
+
                     }
 
+                } else {
+
+                    console.log('get rid of all the errors');
                     this.processing = false;
-                    this.continuePlaying = true;
-                    this.myMove();
+                    this.continuePlaying = false;
                 }
             },
             removeSelected() {
@@ -1687,7 +1753,7 @@
                     }
                 }
             }
-        }
+        },
     }
 </script>
 
