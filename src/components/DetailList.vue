@@ -154,7 +154,7 @@
                                     <p>Loading...</p>
                                 </div>
                                 <div v-else class="list-group" id="list-tab" role="tablist" style="margin-top: 110px;">
-                                    <virtual-list id="virtual-list-style" :size="40" :remain="8" style="height: 75vh; padding-right: 15px;">
+                                    <virtual-list id="virtual-list-style" :size="10" :remain="5" style="height: 75vh; padding-right: 15px;">
                                         <div :key="index" :ref="getRefId(index)" :id="getRefId(index)"
                                              v-bind:class="[ activeTab === index ? 'active' : 'non-active']"
                                              v-for="(argument, index) of getActiveMasterData.masterData.detail_data"
@@ -166,7 +166,7 @@
                                                         <input class="form-control" id="seq_no" type="number" maxlength="10" min="0"
                                                                v-model="argument.seq_no"
                                                                style="padding-left: 5px"
-                                                               @change.prevent="enableUpdateButton(index)"
+                                                               @click.stop.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.seq_no>
                                                     </div>
                                                 </div>
@@ -174,7 +174,7 @@
                                                     <div class="detail-duration">
                                                         <input :id="'entry_name_' + index" class="form-control" type="text" maxlength="25"
                                                                v-model="argument.entry_name"
-                                                               @change.prevent="enableUpdateButton(index)"
+                                                               @click.stop.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.entry_name>
                                                     </div>
                                                 </div>
@@ -182,7 +182,7 @@
                                                     <div class="detail-duration">
                                                         <input class="form-control" id="duration" type="number" maxlength="10" min="1"
                                                                v-model="argument.duration"
-                                                               @change.prevent="enableUpdateButton(index)"
+                                                               @click.stop.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.duration>
                                                     </div>
                                                 </div>
@@ -190,7 +190,7 @@
                                                     <div class="detail-repeat-count">
                                                         <input class="form-control" id="repeat_count" type="number" maxlength="10" min="1"
                                                                v-model="argument.repeat_count"
-                                                               @change.prevent="enableUpdateButton(index)"
+                                                               @click.stop.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.repeat_count>
                                                     </div>
                                                 </div>
@@ -200,7 +200,7 @@
                                                 <div id="col-detail-down-start" class="col-md-2 align-self-center">
                                                     <div class="detail-entry-type">
                                                         <select class="form-control" id="entry_type"
-                                                                @change.prevent="enableUpdateButton(index)"
+                                                                @change.stop.prevent="enableUpdateButton(index)"
                                                                 v-model="argument.entry_type">
                                                             <option value="0">off</option>
                                                             <option value="1">on</option>
@@ -212,7 +212,7 @@
                                                     <div class="detail-extra-data">
                                                         <input class="form-control" id="extra_data" type="text" maxlength="64"
                                                                v-model="argument.extra_data"
-                                                               @change.prevent="enableUpdateButton(index)"
+                                                               @click.stop.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.extra_data>
                                                     </div>
                                                 </div>
@@ -220,7 +220,7 @@
                                                     <div class="detail-value">
                                                         <input class="form-control" id="value" type="text" maxlength="25"
                                                                v-model="argument.value"
-                                                               @change.prevent="enableUpdateButton(index)"
+                                                               @click.stop.prevent="enableUpdateButton(index)"
                                                                :placeholder=argument.value>
                                                     </div>
                                                 </div>
@@ -1413,6 +1413,7 @@
                 this.activeTab = tab;
             },
             enableUpdateButton(index) {
+                console.log('HERE -> ');
                 this.enableUpdate[index] = true;
             },
             signoutButtonPressed(e) {
